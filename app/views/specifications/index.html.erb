@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Specifications</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Version</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @specifications.each do |specification| %>
+      <tr>
+        <td><%= specification.title %></td>
+        <td><%= specification.version %></td>
+        <td><%= link_to 'Show', specification %></td>
+        <td><%= link_to 'Edit', edit_specification_path(specification) %></td>
+        <td><%= link_to 'Destroy', specification, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Specification', new_specification_path %>

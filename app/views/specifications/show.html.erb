@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @specification.title %>
+</p>
+
+<p>
+  <strong>Version:</strong>
+  <%= @specification.version %>
+</p>
+
+<%= link_to 'Edit', edit_specification_path(@specification) %> |
+<%= link_to 'Back', specifications_path %>
