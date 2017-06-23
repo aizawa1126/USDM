@@ -5,8 +5,9 @@
 <table>
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Version</th>
+      <th>文書名</th>
+      <th>版</th>
+      <th>更新日</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,6 +17,7 @@
       <tr>
         <td><%= specification.title %></td>
         <td><%= specification.version %></td>
+        <td><%= specification.updated_at %></td>
         <td><%= link_to 'Show', specification %></td>
         <td><%= link_to 'Edit', edit_specification_path(specification) %></td>
         <td><%= link_to 'Destroy', specification, method: :delete, data: { confirm: 'Are you sure?' } %></td>

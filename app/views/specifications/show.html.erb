@@ -1,13 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
+<p class="document_name">
   <%= @specification.title %>
 </p>
 
-<p>
-  <strong>Version:</strong>
-  <%= @specification.version %>
+<p class="version">
+  第<%= @specification.version %>版
+</p>
+
+<p class="update_at">
+  <%= @specification.updated_at %>
 </p>
 
 <%= link_to 'Edit', edit_specification_path(@specification) %> |
