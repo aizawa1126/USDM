@@ -12,5 +12,14 @@
   <%= @specification.updated_at %>
 </p>
 
+<p>目次</p>
+
+<% @specification.chapters.order("number").each do |chapter| %>
+<p>
+  <%= "第"+chapter.number.to_s+"章"  %>
+  <%= link_to chapter.name, chapter_path(chapter.id) %>
+</p>
+<% end %>
+
 <%= link_to 'Edit', edit_specification_path(@specification) %> |
 <%= link_to 'Back', specifications_path %>
