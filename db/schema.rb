@@ -10,13 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170624024121) do
+ActiveRecord::Schema.define(version: 20170625125339) do
 
   create_table "chapters", force: :cascade do |t|
     t.integer "number"
     t.string "name"
     t.string "prefix"
     t.integer "specification_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sections", force: :cascade do |t|
+    t.integer "number"
+    t.string "name"
+    t.integer "chapter_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

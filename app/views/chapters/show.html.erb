@@ -20,5 +20,12 @@
   <%= @chapter.specification_id %>
 </p>
 
+<% @chapter.sections.order("number").each do |section| %>
+<p>
+  <%= @chapter.number%>.<%= section.number%>
+  <%= section.name %>
+</p>
+<% end %>
+
 <%= link_to 'Edit', edit_chapter_path(@chapter) %> |
 <%= link_to 'Back', chapters_path %>
