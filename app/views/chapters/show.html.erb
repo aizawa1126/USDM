@@ -21,10 +21,26 @@
 </p>
 
 <% @chapter.sections.order("number").each do |section| %>
-<p>
+<div>
+  <p>
   <%= @chapter.number%>.<%= section.number%>
   <%= section.name %>
-</p>
+  </p>
+  <% section.requirements.order("number").each do |requirement| %>
+    <p>
+      <%= @chapter.prefix%>-<%= requirement.number %>
+    </p>
+    <p>
+      <%= requirement.content %>
+    </p>
+    <p>
+      <%= requirement.reason %>
+    </p>
+    <p>
+      <%= requirement.description %>
+    </p>
+  <% end %>
+</div>
 <% end %>
 
 <%= link_to 'Edit', edit_chapter_path(@chapter) %> |
