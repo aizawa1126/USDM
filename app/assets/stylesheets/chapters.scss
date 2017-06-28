@@ -1,3 +1,20 @@
 // Place all the styles related to the Chapters controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+  th {
+    background-color: #777777;
+  }
+
+  .requirement_summary {
+    background-color: #ddffdd;
+  }
+
+  .category {
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .spec_number {
+    min-width: 100px;
+  }
+
