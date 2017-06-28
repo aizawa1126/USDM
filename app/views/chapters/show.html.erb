@@ -39,6 +39,9 @@
     <p>
       <%= requirement.description %>
     </p>
+    <% requirement.functions.each do |function| %>
+      <<%= function.name %>>
+    <% end %>
   <% end %>
 </div>
 <% end %>

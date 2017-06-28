@@ -1,0 +1,27 @@
+<%= form_with(model: function, local: true) do |form| %>
+  <% if function.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(function.errors.count, "error") %> prohibited this function from being saved:</h2>
+
+      <ul>
+      <% function.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :function_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :requirement_id %>
+    <%= form.number_field :requirement_id, id: :function_requirement_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

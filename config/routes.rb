@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :functions
   resources :requirements
   resources :sections
   resources :chapters
