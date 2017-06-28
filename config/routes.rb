@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :specs
   resources :functions
   resources :requirements
   resources :sections

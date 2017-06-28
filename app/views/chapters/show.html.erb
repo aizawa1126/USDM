@@ -40,7 +40,12 @@
       <%= requirement.description %>
     </p>
     <% requirement.functions.each do |function| %>
+      <p>
       <<%= function.name %>>
+      </p>
+      <% function.specs.each do |spec| %>
+        <div><%= spec.content %></div>
+      <% end %>
     <% end %>
   <% end %>
 </div>

@@ -1,0 +1,27 @@
+<%= form_with(model: spec, local: true) do |form| %>
+  <% if spec.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(spec.errors.count, "error") %> prohibited this spec from being saved:</h2>
+
+      <ul>
+      <% spec.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_area :content, id: :spec_content %>
+  </div>
+
+  <div class="field">
+    <%= form.label :function_id %>
+    <%= form.number_field :function_id, id: :spec_function_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
