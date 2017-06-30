@@ -21,5 +21,7 @@
 </p>
 <% end %>
 
+<%= link_to '章を追加', new_chapter_path(specification_id: @specification.id) %>
+
 <%= link_to 'Edit', edit_specification_path(@specification) %> |
 <%= link_to 'Back', specifications_path %>

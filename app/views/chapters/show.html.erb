@@ -50,7 +50,18 @@
       <% end %>
     <% end %>
   <% end %>
+
+
+  <% if @chapter.sections.count == 0 %>
+  <tr>
+    <td colspan="7" class="category"><%= link_to 'カテゴリを追加', new_section_path(chapter_id: @chapter.id) %></td>
+  </tr>
+  <% end %>
 </table>
+
+<% if @chapter.sections.count != 0 %>
+<%= link_to 'カテゴリを追加', new_section_path(chapter_id: @chapter.id) %>
+<% end %>
 
 <%= link_to 'Edit', edit_chapter_path(@chapter) %> |
 <%= link_to 'Back', chapters_path %>

@@ -21,9 +21,9 @@
     <%= form.text_field :name, id: :section_name %>
   </div>
 
-  <div class="field">
+  <div class="field" hidden>
     <%= form.label :chapter_id %>
-    <%= form.number_field :chapter_id, id: :section_chapter_id %>
+    <%= form.number_field :chapter_id, id: :section_chapter_id, value: @chapter_id %>
   </div>
 
   <div class="actions">

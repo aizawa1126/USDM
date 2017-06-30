@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 20170628133716) do
 
   create_table "specifications", force: :cascade do |t|
     t.string "title"
-    t.string "version"
+    t.integer "version"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

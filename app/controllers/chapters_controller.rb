@@ -15,6 +15,7 @@ class ChaptersController < ApplicationController
   # GET /chapters/new
   def new
     @chapter = Chapter.new
+    @specification_id = params[:specification_id]
   end
 
   # GET /chapters/1/edit

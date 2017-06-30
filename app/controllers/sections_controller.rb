@@ -15,6 +15,7 @@ class SectionsController < ApplicationController
   # GET /sections/new
   def new
     @section = Section.new
+    @chapter_id = params[:chapter_id]
   end
 
   # GET /sections/1/edit

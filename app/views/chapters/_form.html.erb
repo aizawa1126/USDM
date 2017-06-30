@@ -26,9 +26,9 @@
     <%= form.text_field :prefix, id: :chapter_prefix %>
   </div>
 
-  <div class="field">
+  <div class="field" hidden>
     <%= form.label :specification_id %>
-    <%= form.number_field :specification_id, id: :chapter_specification_id %>
+    <%= form.number_field :specification_id, id: :chapter_specification_id, value: @specification_id %>
   </div>
 
   <div class="actions">
