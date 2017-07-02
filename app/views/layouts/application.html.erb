@@ -9,6 +9,18 @@
   </head>
 
   <body>
+    <div id="headerArea">
+      <p>
+      <% if !@specification.nil? %>
+      <%= link_to @specification.title, @specification %>
+      <% else %>
+      仕様書一覧
+      <% end %>
+      </p>
+    </div>
+    <div id="contentsArea">
     <%= yield %>
+    </div>
+    <div id="footerArea">Footer</div>
   </body>
 </html>

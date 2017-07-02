@@ -66,10 +66,15 @@ class ChaptersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_chapter
       @chapter = Chapter.find(params[:id])
+      set_specification
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def chapter_params
       params.require(:chapter).permit(:number, :name, :prefix, :specification_id)
+    end
+
+    def set_specification
+      @specification = Specification.find(@chapter.specification_id)
     end
 end
