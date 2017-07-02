@@ -1,61 +1,17 @@
 <table border="5" rules="all">
   <tr>
-    <th>カテゴリ名</th>
-    <th colspan="3">要求</th>
+    <th class="category">カテゴリ名</th>
+    <th class="requirement" colspan="3">要求</th>
     <th class="spec_number">要求番号</th>
-    <th>説明</th>
-    <th>備考</th>
+    <th class="description" >説明</th>
+    <th class="note" >備考</th>
   </tr>
-
-  <% @chapter.sections.order("number").each do |section| %>
-    <% isFirstRequirement = true %>
-    <% section.requirements.order("number").each do |requirement| %>
-  <tr>
-    <% if isFirstRequirement %>
-    <td rowspan="<%= rowspan(section.id) %>" class="category">
-      <%= @chapter.number%>.<%= section.number%>
-      <%= section.name %>
-    </td>
-    <% end %>
-    <% isFirstRequirement = false %>
-    <td colspan="3" rowspan="3" class="requirement_summary">要求</td>
-    <td class="requirement_summary"><%= @chapter.prefix %>-<%= requirement.number %></td>
-    <td class="requirement_summary"><%= requirement.content %></td>
-    <td class="requirement_summary"></td>
-  </tr>
-  <tr>
-    <td>理由</td>
-    <td><%= requirement.reason %></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>説明</td>
-    <td><%= requirement.description %></td>
-    <td></td>
-  </tr>
-      <% requirement.functions.each do |function| %>
-  <tr>
-    <td colspan="7"><<%= function.name %>></td>
-  </tr>
-        <% function.specs.each do |spec| %>
-  <tr>
-    <td>■</td>
-    <td>□</td>
-    <td>□</td>
-    <td><%= @chapter.prefix %>-<%= requirement.number %>-11</td>
-    <td><%= spec.content %></td>
-    <td></td>
-  </tr>
-        <% end %>  
-      <% end %>
-    <% end %>
-  <% end %>
-
-
-  <% if @chapter.sections.count == 0 %>
+  <% if !hasSections? %>
   <tr>
     <td colspan="7" class="category"><%= link_to 'カテゴリを追加', new_section_path(chapter_id: @chapter.id) %></td>
   </tr>
+  <% else %>
+  <%= render 'table', chapter: @chapter %>
   <% end %>
 </table>
 

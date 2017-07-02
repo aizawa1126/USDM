@@ -1,4 +1,12 @@
 module ChaptersHelper
+  def hasSections?
+    @chapter.sections.count != 0
+  end
+
+  def hasRequirements? section
+    section.requirements.count != 0
+  end
+
   def rowspan section_id
     row_count = 0
     section = @chapter.sections.find(section_id)

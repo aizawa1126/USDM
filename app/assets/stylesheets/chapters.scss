@@ -5,16 +5,28 @@
     background-color: #777777;
   }
 
+  .requirement {
+    width: 4em;
+  }
+
   .requirement_summary {
     background-color: #ddffdd;
   }
 
   .category {
+    width: 8em;
     text-align: left;
     vertical-align: top;
   }
 
   .spec_number {
-    min-width: 100px;
+    width: 6em;
   }
 
+  .description {
+    min-width: 28em;
+  }
+
+  .note {
+   width: 6em; 
+  }

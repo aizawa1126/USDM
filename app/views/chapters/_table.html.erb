@@ -1,0 +1,49 @@
+<% @chapter.sections.order("number").each do |section| %>
+  <% isFirstRequirement = true %>
+  <% if !hasRequirements?(section) %>
+    <%= render 'section_only_table', section: section %>
+  <% else %>
+
+    <% section.requirements.order("number").each do |requirement| %>
+  <tr>
+      <% if isFirstRequirement %>
+    <td rowspan="<%= rowspan(section.id) %>" class="category">
+      <%= @chapter.number%>.<%= section.number%><br/>
+      <%= section.name %>
+    </td>
+      <% end %>
+      <% isFirstRequirement = false %>
+    <td colspan="3" rowspan="3" class="requirement_summary">要求</td>
+    <td class="requirement_summary"><%= @chapter.prefix %>-<%= requirement.number %></td>
+    <td class="requirement_summary"><%= requirement.content %></td>
+    <td class="requirement_summary"></td>
+  </tr>
+  <tr>
+    <td>理由</td>
+    <td><%= requirement.reason %></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>説明</td>
+    <td><%= requirement.description %></td>
+    <td></td>
+  </tr>
+      <% requirement.functions.each do |function| %>
+  <tr>
+    <td colspan="7"><<%= function.name %>></td>
+  </tr>
+        <% function.specs.each do |spec| %>
+  <tr>
+    <td>■</td>
+    <td>□</td>
+    <td>□</td>
+    <td><%= @chapter.prefix %>-<%= requirement.number %>-11</td>
+    <td><%= spec.content %></td>
+    <td></td>
+  </tr>
+        <% end %>
+      <% end %>
+    <% end %>
+
+  <% end %>
+<% end %>

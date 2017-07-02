@@ -15,6 +15,7 @@ class RequirementsController < ApplicationController
   # GET /requirements/new
   def new
     @requirement = Requirement.new
+    @section_id = params[:section_id]
   end
 
   # GET /requirements/1/edit
