@@ -3,5 +3,5 @@
     <%= @chapter.number%>.<%= section.number%><br/>
     <%= section.name %>
   </td>
-  <td colspan="6" class="category"><%= link_to '要求を追加', new_requirement_path(section_id: section.id) %></td>
+  <td colspan="6" class="category"><%= link_to '要求を追加', new_requirement_path(chapter_id: @chapter.id, section_id: section.id) %></td>
 </tr>

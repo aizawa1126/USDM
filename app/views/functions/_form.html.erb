@@ -16,9 +16,9 @@
     <%= form.text_field :name, id: :function_name %>
   </div>
 
-  <div class="field">
+  <div class="field" hidden>
     <%= form.label :requirement_id %>
-    <%= form.number_field :requirement_id, id: :function_requirement_id %>
+    <%= form.number_field :requirement_id, id: :function_requirement_id, value: @requirement.id %>
   </div>
 
   <div class="actions">

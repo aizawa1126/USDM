@@ -18,6 +18,3 @@
 <% if @chapter.sections.count != 0 %>
 <%= link_to 'カテゴリを追加', new_section_path(chapter_id: @chapter.id) %>
 <% end %>
-
-<%= link_to 'Edit', edit_chapter_path(@chapter) %> |
-<%= link_to 'Back', chapters_path %>

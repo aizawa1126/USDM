@@ -1,5 +1,6 @@
 class SpecsController < ApplicationController
   before_action :set_spec, only: [:show, :edit, :update, :destroy]
+  before_action :set_chapter, only: [:create, :update]
 
   # GET /specs
   # GET /specs.json
@@ -15,10 +16,12 @@ class SpecsController < ApplicationController
   # GET /specs/new
   def new
     @spec = Spec.new
+    @function = Function.find(params[:function_id])
   end
 
   # GET /specs/1/edit
   def edit
+    @function = Function.find(@spec.function_id)
   end
 
   # POST /specs
@@ -28,7 +31,7 @@ class SpecsController < ApplicationController
 
     respond_to do |format|
       if @spec.save
-        format.html { redirect_to @spec, notice: 'Spec was successfully created.' }
+        format.html { redirect_to chapter_path(@chapter.id), notice: 'Requirement was successfully created.' }
         format.json { render :show, status: :created, location: @spec }
       else
         format.html { render :new }
@@ -65,6 +68,13 @@ class SpecsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_spec
       @spec = Spec.find(params[:id])
+    end
+
+    def set_chapter
+      @function = Function.find(params[:spec][:function_id])
+      @requirement = Requirement.find(@function.requirement_id)
+      @section = Section.find(@requirement.section_id)
+      @chapter = Chapter.find(@section.chapter_id)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

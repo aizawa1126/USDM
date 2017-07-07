@@ -1,5 +1,6 @@
 class FunctionsController < ApplicationController
   before_action :set_function, only: [:show, :edit, :update, :destroy]
+  before_action :set_chapter, only: [:create, :update]
 
   # GET /functions
   # GET /functions.json
@@ -15,10 +16,12 @@ class FunctionsController < ApplicationController
   # GET /functions/new
   def new
     @function = Function.new
+    @requirement = Requirement.find(params[:requirement_id])
   end
 
   # GET /functions/1/edit
   def edit
+    @requirement = Requirement.find(@function.requirement_id)
   end
 
   # POST /functions
@@ -28,7 +31,7 @@ class FunctionsController < ApplicationController
 
     respond_to do |format|
       if @function.save
-        format.html { redirect_to @function, notice: 'Function was successfully created.' }
+        format.html { redirect_to chapter_path(@chapter.id), notice: 'Requirement was successfully created.' }
         format.json { render :show, status: :created, location: @function }
       else
         format.html { render :new }
@@ -65,6 +68,12 @@ class FunctionsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_function
       @function = Function.find(params[:id])
+    end
+
+    def set_chapter
+      @requirement = Requirement.find(params[:function][:requirement_id])
+      @section = Section.find(@requirement.section_id)
+      @chapter = Chapter.find(@section.chapter_id)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

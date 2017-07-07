@@ -2,5 +2,4 @@
 
 <%= render 'form', chapter: @chapter %>
 
-<%= link_to 'Show', @chapter %> |
-<%= link_to 'Back', chapters_path %>
+<%= link_to '表紙に戻る', specification_path(@chapter.specification_id) %>

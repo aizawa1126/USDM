@@ -30,7 +30,7 @@
   </tr>
       <% requirement.functions.each do |function| %>
   <tr>
-    <td colspan="7"><<%= function.name %>></td>
+    <td colspan="7"><%= "<"+function.name+">" %></td>
   </tr>
         <% function.specs.each do |spec| %>
   <tr>
@@ -42,8 +42,14 @@
     <td></td>
   </tr>
         <% end %>
+  <tr>
+    <td colspan="7"><%= link_to '仕様を追加', new_spec_path(function_id: function.id) %></td>
+  </tr>
       <% end %>
+      <td colspan="7"><%= link_to '機能を追加', new_function_path(requirement_id: requirement.id) %></td>
     <% end %>
-
+  <tr>
+    <td colspan="6" class="category"><%= link_to '要求を追加', new_requirement_path(chapter_id: @chapter.id, section_id: section.id) %></td>
+  </tr>
   <% end %>
 <% end %>

@@ -16,9 +16,9 @@
     <%= form.text_area :content, id: :spec_content %>
   </div>
 
-  <div class="field">
+  <div class="field" hidden>
     <%= form.label :function_id %>
-    <%= form.number_field :function_id, id: :spec_function_id %>
+    <%= form.number_field :function_id, id: :spec_function_id, value: @function.id %>
   </div>
 
   <div class="actions">
