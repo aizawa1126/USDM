@@ -8,11 +8,6 @@ class FunctionsController < ApplicationController
     @functions = Function.all
   end
 
-  # GET /functions/1
-  # GET /functions/1.json
-  def show
-  end
-
   # GET /functions/new
   def new
     @function = Function.new
@@ -22,6 +17,8 @@ class FunctionsController < ApplicationController
   # GET /functions/1/edit
   def edit
     @requirement = Requirement.find(@function.requirement_id)
+    @section = Section.find(@requirement.section_id)
+    @chapter = Chapter.find(@section.chapter_id)
   end
 
   # POST /functions
@@ -45,7 +42,7 @@ class FunctionsController < ApplicationController
   def update
     respond_to do |format|
       if @function.update(function_params)
-        format.html { redirect_to @function, notice: 'Function was successfully updated.' }
+        format.html { redirect_to chapter_path(@chapter), notice: 'Requirement was successfully updated.' }
         format.json { render :show, status: :ok, location: @function }
       else
         format.html { render :edit }
@@ -57,9 +54,12 @@ class FunctionsController < ApplicationController
   # DELETE /functions/1
   # DELETE /functions/1.json
   def destroy
+    @requirement = Requirement.find(@function.requirement_id)
+    @section = Section.find(@requirement.section_id)
+    @chapter = Chapter.find(@section.chapter_id)
     @function.destroy
     respond_to do |format|
-      format.html { redirect_to functions_url, notice: 'Function was successfully destroyed.' }
+      format.html { redirect_to chapter_path(@chapter), notice: 'Function was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
