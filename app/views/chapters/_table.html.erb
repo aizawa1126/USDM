@@ -38,7 +38,8 @@
     <td>■</td>
     <td>□</td>
     <td>□</td>
-    <td><%= @chapter.prefix %>-<%= requirement.number %>-11</td>
+    <% spec_num = @chapter.prefix + "-" + requirement.number.to_s + "-" + "11"%>
+    <td><%= link_to spec_num, edit_spec_path(spec) %></td>
     <td><%= spec.content %></td>
     <td></td>
   </tr>

@@ -2,5 +2,5 @@
 
 <%= render 'form', spec: @spec %>
 
-<%= link_to 'Show', @spec %> |
-<%= link_to 'Back', specs_path %>
+<%= link_to 'Destroy', @spec, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Back', @chapter %>

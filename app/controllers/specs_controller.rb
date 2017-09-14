@@ -8,11 +8,6 @@ class SpecsController < ApplicationController
     @specs = Spec.all
   end
 
-  # GET /specs/1
-  # GET /specs/1.json
-  def show
-  end
-
   # GET /specs/new
   def new
     @spec = Spec.new
@@ -45,7 +40,7 @@ class SpecsController < ApplicationController
   def update
     respond_to do |format|
       if @spec.update(spec_params)
-        format.html { redirect_to @spec, notice: 'Spec was successfully updated.' }
+        format.html { redirect_to chapter_path(@chapter), notice: 'Section was successfully created.' }
         format.json { render :show, status: :ok, location: @spec }
       else
         format.html { render :edit }
@@ -57,9 +52,13 @@ class SpecsController < ApplicationController
   # DELETE /specs/1
   # DELETE /specs/1.json
   def destroy
+    @function = Function.find(@spec.function_id)
+    @requirement = Requirement.find(@function.requirement_id)
+    @section = Section.find(@requirement.section_id)
+    @chapter = Chapter.find(@section.chapter_id)
     @spec.destroy
     respond_to do |format|
-      format.html { redirect_to specs_url, notice: 'Spec was successfully destroyed.' }
+      format.html { redirect_to chapter_path(@chapter), notice: 'Spec was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
