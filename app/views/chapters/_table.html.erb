@@ -14,7 +14,8 @@
       <% end %>
       <% isFirstRequirement = false %>
     <td colspan="3" rowspan="3" class="requirement_summary">要求</td>
-    <td class="requirement_summary"><%= @chapter.prefix %>-<%= requirement.number %></td>
+    <% req_num = @chapter.prefix + "-" + requirement.number.to_s%>
+    <td class="requirement_summary"><%= link_to req_num, edit_requirement_path(requirement) %></td>
     <td class="requirement_summary"><%= requirement.content %></td>
     <td class="requirement_summary"></td>
   </tr>

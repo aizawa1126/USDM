@@ -2,5 +2,5 @@
 
 <%= render 'form', requirement: @requirement %>
 
-<%= link_to 'Show', @requirement %> |
-<%= link_to 'Back', requirements_path %>
+<%= link_to 'Destroy', @requirement, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Back', @chapter %>

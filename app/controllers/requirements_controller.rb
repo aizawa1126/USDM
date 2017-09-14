@@ -17,6 +17,7 @@ class RequirementsController < ApplicationController
   # GET /requirements/1/edit
   def edit
     @section = Section.find(@requirement.section_id)
+    @chapter = Chapter.find(@section.chapter_id)
   end
 
   # POST /requirements
@@ -40,7 +41,7 @@ class RequirementsController < ApplicationController
   def update
     respond_to do |format|
       if @requirement.update(requirement_params)
-        format.html { redirect_to @requirement, notice: 'Requirement was successfully updated.' }
+        format.html { redirect_to chapter_path(@chapter), notice: 'Requirement was successfully updated.' }
         format.json { render :show, status: :ok, location: @requirement }
       else
         format.html { render :edit }
@@ -52,9 +53,11 @@ class RequirementsController < ApplicationController
   # DELETE /requirements/1
   # DELETE /requirements/1.json
   def destroy
+    @section = Section.find(@requirement.section_id)
+    @chapter = Chapter.find(@section.chapter_id)
     @requirement.destroy
     respond_to do |format|
-      format.html { redirect_to requirements_url, notice: 'Requirement was successfully destroyed.' }
+      format.html { redirect_to chapter_path(@chapter), notice: 'Section was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
