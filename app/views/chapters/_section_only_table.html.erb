@@ -1,7 +1,7 @@
 <tr>
   <td rowspan="<%= rowspan(section.id) %>" class="category">
     <%= @chapter.number%>.<%= section.number%><br/>
-    <%= section.name %>
+    <%= link_to section.name, edit_section_path(section) %>
   </td>
   <td colspan="6" class="category"><%= link_to '要求を追加', new_requirement_path(chapter_id: @chapter.id, section_id: section.id) %></td>
 </tr>

@@ -9,7 +9,7 @@
       <% if isFirstRequirement %>
     <td rowspan="<%= rowspan(section.id) %>" class="category">
       <%= @chapter.number%>.<%= section.number%><br/>
-      <%= section.name %>
+      <%= link_to section.name, edit_section_path(section) %>
     </td>
       <% end %>
       <% isFirstRequirement = false %>
