@@ -16,17 +16,17 @@
     <td colspan="3" rowspan="3" class="requirement_summary">要求</td>
     <% req_num = @chapter.prefix + "-" + requirement.number.to_s%>
     <td class="requirement_summary"><%= link_to req_num, edit_requirement_path(requirement) %></td>
-    <td class="requirement_summary"><%= requirement.content %></td>
+    <td class="requirement_summary description"><%= requirement.content %></td>
     <td class="requirement_summary"></td>
   </tr>
   <tr>
     <td>理由</td>
-    <td><%= requirement.reason %></td>
+    <td class="description"><%= requirement.reason %></td>
     <td></td>
   </tr>
   <tr>
     <td>説明</td>
-    <td><%= requirement.description %></td>
+    <td class="description"><%= requirement.description %></td>
     <td></td>
   </tr>
       <% requirement.functions.each do |function| %>
@@ -34,13 +34,13 @@
     <td colspan="7"><%= link_to "<"+function.name+">", edit_function_path(function) %></td>
   </tr>
         <% function.specs.each do |spec| %>
-  <tr>
-    <td>■</td>
-    <td>□</td>
-    <td>□</td>
+  <tr class="spec">
+    <td class="check_specification checked"></td>
+    <td class="design_review unchecked"></td>
+    <td class="test_design unchecked"></td>
     <% spec_num = @chapter.prefix + "-" + requirement.number.to_s + "-" + "11"%>
     <td><%= link_to spec_num, edit_spec_path(spec) %></td>
-    <td><%= spec.content %></td>
+    <td class="description"><%= spec.content %></td>
     <td></td>
   </tr>
         <% end %>

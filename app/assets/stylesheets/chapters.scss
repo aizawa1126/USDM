@@ -5,6 +5,11 @@
     background-color: #777777;
   }
 
+  tr {
+    text-align: left;
+    vertical-align: top;
+  }
+
   .requirement {
     width: 4em;
   }
@@ -15,16 +20,27 @@
 
   .category {
     width: 8em;
-    text-align: left;
-    vertical-align: top;
   }
 
   .spec_number {
-    width: 6em;
+    width: 9em;
   }
 
   .description {
     min-width: 28em;
+  }
+
+  .description{
+    word-break:break-all;
+    white-space:pre-wrap;
+  }
+
+  .spec td.checked:before{
+    content: "■"
+  }
+
+  .spec td.unchecked:before{
+    content: "□"
   }
 
   .note {
