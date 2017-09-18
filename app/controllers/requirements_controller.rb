@@ -2,12 +2,6 @@ class RequirementsController < ApplicationController
   before_action :set_requirement, only: [:show, :edit, :update, :destroy]
   before_action :set_chapter, only: [:create, :update]
 
-  # GET /requirements
-  # GET /requirements.json
-  def index
-    @requirements = Requirement.all
-  end
-
   # GET /requirements/new
   def new
     @requirement = Requirement.new

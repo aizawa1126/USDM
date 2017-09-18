@@ -2,12 +2,6 @@ class FunctionsController < ApplicationController
   before_action :set_function, only: [:show, :edit, :update, :destroy]
   before_action :set_chapter, only: [:create, :update]
 
-  # GET /functions
-  # GET /functions.json
-  def index
-    @functions = Function.all
-  end
-
   # GET /functions/new
   def new
     @function = Function.new

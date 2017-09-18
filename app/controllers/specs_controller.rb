@@ -2,12 +2,6 @@ class SpecsController < ApplicationController
   before_action :set_spec, only: [:show, :edit, :update, :destroy]
   before_action :set_chapter, only: [:create, :update]
 
-  # GET /specs
-  # GET /specs.json
-  def index
-    @specs = Spec.all
-  end
-
   # GET /specs/new
   def new
     @spec = Spec.new

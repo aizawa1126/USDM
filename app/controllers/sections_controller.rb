@@ -2,12 +2,6 @@ class SectionsController < ApplicationController
   before_action :set_section, only: [:edit, :update, :destroy]
   before_action :set_chapter, only: [:create, :update]
 
-  # GET /sections
-  # GET /sections.json
-  def index
-    @sections = Section.all
-  end
-
   # GET /sections/new
   def new
     @section = Section.new
