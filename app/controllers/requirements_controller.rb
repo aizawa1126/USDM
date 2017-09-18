@@ -12,6 +12,7 @@ class RequirementsController < ApplicationController
   def new
     @requirement = Requirement.new
     @section = Section.find(params[:section_id])
+    @chapter = Chapter.find(@section.chapter_id)
   end
 
   # GET /requirements/1/edit

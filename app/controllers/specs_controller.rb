@@ -12,11 +12,17 @@ class SpecsController < ApplicationController
   def new
     @spec = Spec.new
     @function = Function.find(params[:function_id])
+    @requirement = Requirement.find(@function.requirement_id)
+    @section = Section.find(@requirement.section_id)
+    @chapter = Chapter.find(@section.chapter_id)
   end
 
   # GET /specs/1/edit
   def edit
     @function = Function.find(@spec.function_id)
+    @requirement = Requirement.find(@function.requirement_id)
+    @section = Section.find(@requirement.section_id)
+    @chapter = Chapter.find(@section.chapter_id)
   end
 
   # POST /specs

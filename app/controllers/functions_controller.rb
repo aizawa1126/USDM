@@ -12,6 +12,8 @@ class FunctionsController < ApplicationController
   def new
     @function = Function.new
     @requirement = Requirement.find(params[:requirement_id])
+    @section = Section.find(@requirement.section_id)
+    @chapter = Chapter.find(@section.chapter_id)
   end
 
   # GET /functions/1/edit
