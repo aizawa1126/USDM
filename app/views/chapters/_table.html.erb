@@ -35,9 +35,12 @@
   </tr>
         <% function.specs.each do |spec| %>
   <tr class="spec">
-    <td class="check_specification checked"></td>
-    <td class="design_review unchecked"></td>
-    <td class="test_design unchecked"></td>
+    <% checked = spec.customer_review ? "checked" : "unchecked"%>
+    <td class="check_specification <%= checked %>"></td>
+    <% checked = spec.design_review ? "checked" : "unchecked"%>
+    <td class="design_review <%= checked %>"></td>
+    <% checked = spec.test_review ? "checked" : "unchecked"%>
+    <td class="test_design <%= checked %>"></td>
     <% spec_num = @chapter.prefix + "-" + requirement.number.to_s + "-" + "11"%>
     <td><%= link_to spec_num, edit_spec_path(spec) %></td>
     <td class="description"><%= spec.content %></td>

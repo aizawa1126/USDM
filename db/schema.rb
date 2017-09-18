@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170628133716) do
+ActiveRecord::Schema.define(version: 20170917094724) do
 
   create_table "chapters", force: :cascade do |t|
     t.integer "number"
@@ -58,6 +58,10 @@ ActiveRecord::Schema.define(version: 20170628133716) do
     t.integer "function_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "number"
+    t.boolean "customer_review", default: false
+    t.boolean "design_review", default: false
+    t.boolean "test_review", default: false
   end
 
 end

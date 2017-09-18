@@ -16,6 +16,21 @@
     <%= form.text_area :content, id: :spec_content %>
   </div>
 
+  <div class="field">
+    <%= form.label :customer_review %>
+    <%= form.check_box :customer_review %>
+  </div>
+
+  <div class="field">
+    <%= form.label :design_review %>
+    <%= form.check_box :design_review %>
+  </div>
+
+  <div class="field">
+    <%= form.label :test_review %>
+    <%= form.check_box :test_review %>
+  </div>
+
   <div class="field" hidden>
     <%= form.label :function_id %>
     <%= form.number_field :function_id, id: :spec_function_id, value: @function.id %>
