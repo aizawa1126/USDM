@@ -41,7 +41,7 @@
     <td class="design_review <%= checked %>"></td>
     <% checked = spec.test_review ? "checked" : "unchecked"%>
     <td class="test_design <%= checked %>"></td>
-    <% spec_num = @chapter.prefix + "-" + requirement.number.to_s + "-" + "11"%>
+    <% spec_num = @chapter.prefix + "-" + requirement.number.to_s + "-" + spec.number.to_s %>
     <td><%= link_to spec_num, edit_spec_path(spec) %></td>
     <td class="description"><%= spec.content %></td>
     <td></td>
