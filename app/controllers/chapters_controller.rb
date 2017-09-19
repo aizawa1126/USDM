@@ -4,6 +4,14 @@ class ChaptersController < ApplicationController
   # GET /chapters/1
   # GET /chapters/1.json
   def show
+    respond_to do |format|
+    format.html
+    format.pdf do
+      render pdf: "specs",
+             encoding: "UTF-8",
+             layout: "pdf.html.erb"
+    end
+  end
   end
 
   # GET /chapters/new
