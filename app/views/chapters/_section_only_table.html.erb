@@ -1,5 +1,5 @@
 <tr>
-  <td rowspan="<%= rowspan(section.id) %>" class="category", id=<%= html_tag_id(section) %>>
+  <td rowspan="1" class="category", id=<%= html_tag_id(section) %>>
     <%= @chapter.number%>.<%= section.number%><br/>
     <%= link_to section.name, edit_section_path(section) %>
   </td>

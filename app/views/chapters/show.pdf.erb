@@ -13,10 +13,11 @@
       <% isFirstRequirement = true %>
       <% if !hasRequirements?(section) %>
   <tr>
-    <td rowspan="<%= rowspan_pdf(section.id) %>" class="category">
+    <td rowspan="1" class="category">
         <%= @chapter.number%>.<%= section.number%><br/>
-        <%= link_to section.name, edit_section_path(section) %>
+        <%= section.name %>
     </td>
+    <td colspan="6"></td>
   </tr>
       <% else #if !hasRequirements?(section) %>
         <% section.requirements.order("number").each do |requirement| %>
