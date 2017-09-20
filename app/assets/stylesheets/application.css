@@ -49,4 +49,5 @@ div#footerArea {
 * html div#contentsArea{
   height: 100%;
   overflow: auto;
+  font-size: 9px;
 }

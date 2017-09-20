@@ -31,7 +31,7 @@
   </tr>
       <% requirement.functions.each do |function| %>
   <tr>
-    <td colspan="6"><%= link_to "<"+function.name+">", edit_function_path(function) %></td>
+    <td colspan="6" class="function"><%= link_to "<"+function.name+">", edit_function_path(function) %></td>
   </tr>
         <% function.specs.each do |spec| %>
   <tr class="spec">
