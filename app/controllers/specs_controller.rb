@@ -26,7 +26,7 @@ class SpecsController < ApplicationController
 
     respond_to do |format|
       if @spec.save
-        format.html { redirect_to chapter_path(@chapter.id), notice: 'Requirement was successfully created.' }
+        format.html { redirect_to chapter_path(@chapter.id, anchor: html_tag_id(@spec)), notice: 'Requirement was successfully created.' }
         format.json { render :show, status: :created, location: @spec }
       else
         format.html { render :new }
@@ -40,7 +40,7 @@ class SpecsController < ApplicationController
   def update
     respond_to do |format|
       if @spec.update(spec_params)
-        format.html { redirect_to chapter_path(@chapter), notice: 'Section was successfully created.' }
+        format.html { redirect_to chapter_path(@chapter, anchor: html_tag_id(@spec)), notice: 'Section was successfully created.' }
         format.json { render :show, status: :ok, location: @spec }
       else
         format.html { render :edit }

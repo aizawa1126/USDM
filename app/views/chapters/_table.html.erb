@@ -7,7 +7,7 @@
     <% section.requirements.order("number").each do |requirement| %>
   <tr>
       <% if isFirstRequirement %>
-    <td rowspan="<%= rowspan(section.id) %>" class="category">
+    <td rowspan="<%= rowspan(section.id) %>" class="category" id=<%= html_tag_id(section) %>>
       <%= @chapter.number%>.<%= section.number%><br/>
       <%= link_to section.name, edit_section_path(section) %>
     </td>
@@ -15,7 +15,7 @@
       <% isFirstRequirement = false %>
     <td colspan="3" rowspan="3" class="requirement_summary">要求</td>
     <% req_num = @chapter.prefix + "-" + requirement.number.to_s%>
-    <td class="requirement_summary"><%= link_to req_num, edit_requirement_path(requirement) %></td>
+    <td class="requirement_summary", id=<%= html_tag_id(requirement) %>><%= link_to req_num, edit_requirement_path(requirement) %></td>
     <td class="requirement_summary description"><%= requirement.content %></td>
     <td class="requirement_summary"></td>
   </tr>
@@ -31,7 +31,7 @@
   </tr>
       <% requirement.functions.each do |function| %>
   <tr>
-    <td colspan="6" class="function"><%= link_to "<"+function.name+">", edit_function_path(function) %></td>
+    <td colspan="6" class="function", id=<%= html_tag_id(function) %>><%= link_to "<"+function.name+">", edit_function_path(function) %></td>
   </tr>
         <% function.specs.each do |spec| %>
   <tr class="spec">
@@ -42,7 +42,7 @@
     <% checked = spec.test_review ? "checked" : "unchecked"%>
     <td class="test_design <%= checked %>"></td>
     <% spec_num = @chapter.prefix + "-" + requirement.number.to_s + "-" + spec.number.to_s %>
-    <td><%= link_to spec_num, edit_spec_path(spec) %></td>
+    <td id=<%= html_tag_id(spec) %>><%= link_to spec_num, edit_spec_path(spec) %></td>
     <td class="description"><%= spec.content %></td>
     <td></td>
   </tr>

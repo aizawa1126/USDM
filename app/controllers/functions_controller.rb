@@ -24,7 +24,7 @@ class FunctionsController < ApplicationController
 
     respond_to do |format|
       if @function.save
-        format.html { redirect_to chapter_path(@chapter.id), notice: 'Requirement was successfully created.' }
+        format.html { redirect_to chapter_path(@chapter.id, anchor: html_tag_id(@function)), notice: 'Requirement was successfully created.' }
         format.json { render :show, status: :created, location: @function }
       else
         format.html { render :new }
@@ -38,7 +38,7 @@ class FunctionsController < ApplicationController
   def update
     respond_to do |format|
       if @function.update(function_params)
-        format.html { redirect_to chapter_path(@chapter), notice: 'Requirement was successfully updated.' }
+        format.html { redirect_to chapter_path(@chapter, anchor: html_tag_id(@function)), notice: 'Requirement was successfully updated.' }
         format.json { render :show, status: :ok, location: @function }
       else
         format.html { render :edit }
