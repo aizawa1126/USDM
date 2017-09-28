@@ -1,5 +1,7 @@
 class Specification < ApplicationRecord
   has_many :chapters, dependent: :destroy
+  has_many :members
+  has_many :users, through: :members
 
   validates :title, presence: true
 

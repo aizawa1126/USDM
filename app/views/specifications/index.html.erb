@@ -6,7 +6,8 @@
       <th>文書名</th>
       <th>版</th>
       <th>更新日</th>
-      <th colspan="2"></th>
+      <th>閲覧</th>
+      <th colspan="2">管理</th>
     </tr>
   </thead>
 
@@ -17,6 +18,7 @@
         <td><%= specification.version %></td>
         <td><%= specification.updated_at %></td>
         <td><%= link_to 'Show', specification %></td>
+        <td><%= link_to "ユーザー", specification_members_path(specification.id) %></td>
         <td><%= link_to 'Destroy', specification, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

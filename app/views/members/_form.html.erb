@@ -1,0 +1,32 @@
+<%= form_with(model: member, url: params[:specification_id].nil? ? member_path : specification_members_path, local: true) do |form| %>
+  <% if member.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(member.errors.count, "error") %> prohibited this member from being saved:</h2>
+
+      <ul>
+      <% member.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%#= form.number_field :user_id, id: :member_user_id %>
+    <% name_selector = [] %>
+    <% @users.each do |user| %>
+      <% name_selector.push([user.name, user.id])%>
+    <% end %>
+    <%= form.select :user_id, name_selector %>
+  </div>
+
+  <div class="field" hidden>
+    <%= form.label :specification_id %>
+    <%= form.number_field :specification_id, id: :member_specification_id, value: @specification.id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
