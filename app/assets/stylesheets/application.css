@@ -29,10 +29,26 @@ body{
   height: 4em;
   background-color: #f2f2f2;;
   color: #000;
+  font-size: 15px;
 }
 
-#headerArea p {
+#headerArea div.logo, #headerArea ul.menu {
+  margin-top: 1.5em;
+}
+
+#headerArea div.logo {
+  position: absolute;
+}
+
+#headerArea ul.menu {
   font-size: 15px;
+  float: right;
+}
+
+#headerArea ul.menu li {
+  position: relative;
+  margin-right: 20px;
+  float: left;
 }
 
 div#footerArea {
@@ -50,4 +66,8 @@ div#footerArea {
   height: 100%;
   overflow: auto;
   font-size: 9px;
+}
+
+li {
+  list-style: none;
 }

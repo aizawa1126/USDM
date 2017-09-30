@@ -10,13 +10,16 @@
 
   <body>
     <div id="headerArea">
-      <p>
+      <div class="logo">
       <% if !@specification.nil? %>
       <%= link_to @specification.title, @specification %>
       <% else %>
-      仕様書一覧
+      <%= link_to "仕様書一覧", root_path %>
       <% end %>
-      </p>
+      </div>
+      <ul class="menu">
+        <li><%= link_to "ユーザー", users_path %></li>
+      </ul>
     </div>
     <div id="contentsArea">
     <%= yield %>
