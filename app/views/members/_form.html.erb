@@ -12,13 +12,17 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :user_id %>
-    <%#= form.number_field :user_id, id: :member_user_id %>
-    <% name_selector = [] %>
-    <% @users.each do |user| %>
-      <% name_selector.push([user.name, user.id])%>
+    <% if local_assigns[:edit].present? %>
+      <p>User</p>
+      <p><%= @member.user.name %></p>
+    <% else %>
+      <%= form.label :user_id %>
+      <% name_selector = [] %>
+      <% @users.each do |user| %>
+        <% name_selector.push([user.name, user.id]) unless user.admin? %>
+      <% end %>
+      <%= form.select :user_id, name_selector %>
     <% end %>
-    <%= form.select :user_id, name_selector %>
   </div>
 
   <div class="field" hidden>
@@ -26,6 +30,30 @@
     <%= form.number_field :specification_id, id: :member_specification_id, value: @specification.id %>
   </div>
 
+  <div class="member_roles">
+    <%= fields_for :member_roles do |mr| %>
+      <%= mr.label :administrator %>
+      <% is_checked = !@member.member_roles.find_by(role_id: set_role_id("administrator")).nil? %>
+      <%= mr.check_box :administrator, checked: is_checked %>
+
+      <%= mr.label :customer %>
+      <% is_checked = !@member.member_roles.find_by(role_id: set_role_id("customer")).nil? %>
+      <%= mr.check_box :customer, checked: is_checked %>
+
+      <%= mr.label :designer %>
+      <% is_checked = !@member.member_roles.find_by(role_id: set_role_id("designer")).nil? %>
+      <%= mr.check_box :designer, checked: is_checked %>
+
+      <%= mr.label :tester %>
+      <% is_checked = !@member.member_roles.find_by(role_id: set_role_id("tester")).nil? %>
+      <%= mr.check_box :tester, checked: is_checked %>
+
+      <%= mr.label :guest %>
+      <% is_checked = !@member.member_roles.find_by(role_id: set_role_id("guest")).nil? %>
+      <%= mr.check_box :guest, checked: is_checked %>
+
+    <% end %>
+  </div>
   <div class="actions">
     <%= form.submit %>
   </div>

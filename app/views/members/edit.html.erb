@@ -1,0 +1,5 @@
+<h1>Edit Member</h1>
+
+<%= render partial: 'form', locals: {member: @member, edit: true} %>
+
+<%= link_to 'Back', specification_members_path(@specification.id) %>

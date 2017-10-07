@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170921160044) do
+ActiveRecord::Schema.define(version: 20171006123358) do
 
   create_table "chapters", force: :cascade do |t|
     t.integer "number"
@@ -28,9 +28,29 @@ ActiveRecord::Schema.define(version: 20170921160044) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "member_roles", force: :cascade do |t|
+    t.integer "member_id"
+    t.integer "role_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "members", force: :cascade do |t|
     t.integer "user_id"
     t.integer "specification_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "operations", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "permissions", force: :cascade do |t|
+    t.integer "role_id"
+    t.integer "operation_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -41,6 +61,12 @@ ActiveRecord::Schema.define(version: 20170921160044) do
     t.string "reason"
     t.string "description"
     t.integer "section_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -76,6 +102,7 @@ ActiveRecord::Schema.define(version: 20170921160044) do
     t.string "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "admin"
   end
 
 end
