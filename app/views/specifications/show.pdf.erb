@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<p class="document_name">
+  <%= @specification.title %>
+</p>
+
+<p class="version">
+  第<%= @specification.version %>版
+</p>
+
+<p class="update_at">
+  <%= @specification.updated_at %>
+</p>
+
+<p>目次</p>
+
+<table>
+  <tbody>
+<% @specification.chapters.order("number").each do |chapter| %>
+  <tr>
+    <td>
+  <%= "第"+chapter.number.to_s+"章"  %>
+  <%= link_to chapter.name, chapter_path(chapter.id) %>
+    </td>
+    <td>
+    <%= link_to 'Edit', edit_chapter_path(chapter) %>
+    </td>
+
+<% end %>
+  </tbody>
+</table>
+
+<%= link_to '章を追加', new_chapter_path(specification_id: @specification.id) %>
+
+<%= link_to '表紙を編集', edit_specification_path(@specification) %> |
+<%= link_to 'トップへ戻る', specifications_path %>

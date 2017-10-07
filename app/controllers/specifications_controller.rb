@@ -10,6 +10,14 @@ class SpecificationsController < ApplicationController
   # GET /specifications/1
   # GET /specifications/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "specs",
+             encoding: "UTF-8",
+             layout: "pdf.html.erb"
+      end
+    end
   end
 
   # GET /specifications/new
