@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  resources :permissions
-  resources :operations
-  resources :member_roles
-  resources :roles
   resources :users
   resources :specs, only: [:new, :create, :edit, :update, :destroy]
   resources :functions, only: [:new, :create, :edit, :update, :destroy]
