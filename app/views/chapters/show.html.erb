@@ -8,7 +8,7 @@
   </tr>
   <% if !hasSections? %>
   <tr>
-    <td colspan="7" class="category"><%= link_to 'カテゴリを追加', new_section_path(chapter_id: @chapter.id) %></td>
+    <td colspan="7" class="category"><%= link_to 'カテゴリを追加', new_chapter_section_path(@chapter) %></td>
   </tr>
   <% else %>
   <%= render 'table', chapter: @chapter %>
@@ -16,5 +16,5 @@
 </table>
 
 <% if @chapter.sections.count != 0 %>
-<%= link_to 'カテゴリを追加', new_section_path(chapter_id: @chapter.id) %>
+<%= link_to 'カテゴリを追加', new_chapter_section_path(@chapter) %>
 <% end %>

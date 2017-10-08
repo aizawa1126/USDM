@@ -1,4 +1,4 @@
-<%= form_with(model: requirement, local: true) do |form| %>
+<%= form_with(model: requirement, url: params[:section_id].nil? ? requirement_path : section_requirements_path,local: true) do |form| %>
   <% if requirement.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(requirement.errors.count, "error") %> prohibited this requirement from being saved:</h2>
@@ -33,7 +33,8 @@
 
   <div class="field" hidden>
     <%= form.label :section_id %>
-    <%= form.number_field :section_id, id: :requirement_section_id, value: @section.id %>
+    <% section_id = !params[:section_id].nil? ? params[:section_id] : @requirement.section_id %>
+    <%= form.number_field :section_id, id: :requirement_section_id, value: section_id %>
   </div>
 
   <div class="actions">

@@ -1,6 +1,5 @@
 class SectionsController < ApplicationController
   before_action :set_section, only: [:edit, :update, :destroy]
-  before_action :set_chapter, only: [:create, :update]
 
   # GET /sections/new
   def new
@@ -10,7 +9,6 @@ class SectionsController < ApplicationController
 
   # GET /sections/1/edit
   def edit
-    @chapter = Chapter.find(@section.chapter_id)
   end
 
   # POST /sections
@@ -20,7 +18,8 @@ class SectionsController < ApplicationController
 
     respond_to do |format|
       if @section.save
-        format.html { redirect_to chapter_path(@chapter, anchor: html_tag_id(@section)), notice: 'Section was successfully created.' }
+        chapter = @section.chapter
+        format.html { redirect_to chapter_path(chapter, anchor: html_tag_id(@section)), notice: 'Section was successfully created.' }
         format.json { render :show, status: :created, location: @section }
       else
         format.html { render :new }
@@ -34,7 +33,8 @@ class SectionsController < ApplicationController
   def update
     respond_to do |format|
       if @section.update(section_params)
-        format.html { redirect_to chapter_path(@chapter, anchor: html_tag_id(@section)), notice: 'Section was successfully created.' }
+        chapter = @section.chapter
+        format.html { redirect_to chapter_path(chapter, anchor: html_tag_id(@section)), notice: 'Section was successfully created.' }
         format.json { render :show, status: :ok, location: @section }
       else
         format.html { render :edit }
@@ -46,10 +46,10 @@ class SectionsController < ApplicationController
   # DELETE /sections/1
   # DELETE /sections/1.json
   def destroy
-    @chapter = Chapter.find(@section.chapter_id)
+    chapter = @section.chapter
     @section.destroy
     respond_to do |format|
-format.html { redirect_to chapter_path(@chapter), notice: 'Section was successfully destroyed.' }
+      format.html { redirect_to chapter_path(chapter), notice: 'Section was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -58,10 +58,6 @@ format.html { redirect_to chapter_path(@chapter), notice: 'Section was successfu
     # Use callbacks to share common setup or constraints between actions.
     def set_section
       @section = Section.find(params[:id])
-    end
-
-    def set_chapter
-      @chapter = Chapter.find(params[:section][:chapter_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

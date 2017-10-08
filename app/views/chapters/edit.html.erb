@@ -2,4 +2,5 @@
 
 <%= render 'form', chapter: @chapter %>
 
+<%= link_to 'Destroy', @chapter, method: :delete, data: { confirm: 'Are you sure?' } %>
 <%= link_to '表紙に戻る', specification_path(@chapter.specification_id) %>

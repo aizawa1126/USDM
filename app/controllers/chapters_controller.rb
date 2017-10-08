@@ -57,9 +57,10 @@ class ChaptersController < ApplicationController
   # DELETE /chapters/1
   # DELETE /chapters/1.json
   def destroy
+    specification = @chapter.specification
     @chapter.destroy
     respond_to do |format|
-      format.html { redirect_to chapters_url, notice: 'Chapter was successfully destroyed.' }
+      format.html { redirect_to specification_path(specification), notice: 'Chapter was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -68,15 +69,10 @@ class ChaptersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_chapter
       @chapter = Chapter.find(params[:id])
-      set_specification
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def chapter_params
       params.require(:chapter).permit(:number, :name, :prefix, :specification_id)
-    end
-
-    def set_specification
-      @specification = Specification.find(@chapter.specification_id)
     end
 end

@@ -1,4 +1,4 @@
-<%= form_with(model: chapter, local: true) do |form| %>
+<%= form_with(model: chapter, url: params[:specification_id].nil? ? chapter_path : specification_chapters_path, local: true) do |form| %>
   <% if chapter.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(chapter.errors.count, "error") %> prohibited this chapter from being saved:</h2>
@@ -28,7 +28,8 @@
 
   <div class="field" hidden>
     <%= form.label :specification_id %>
-    <%= form.number_field :specification_id, id: :chapter_specification_id, value: @specification.id %>
+    <% specification_id = !params[:specification_id].nil? ? params[:specification_id] : @chapter.specification_id %>
+    <%= form.number_field :specification_id, id: :chapter_specification_id, value: specification_id %>
   </div>
 
   <div class="actions">

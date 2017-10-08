@@ -1,4 +1,4 @@
-<%= form_with(model: spec, local: true) do |form| %>
+<%= form_with(model: spec, url: params[:function_id].nil? ? spec_path : function_specs_path, local: true) do |form| %>
   <% if spec.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(spec.errors.count, "error") %> prohibited this spec from being saved:</h2>
@@ -38,7 +38,8 @@
 
   <div class="field" hidden>
     <%= form.label :function_id %>
-    <%= form.number_field :function_id, id: :spec_function_id, value: @function.id %>
+    <% function_id = !params[:function_id].nil? ? params[:function_id] : @spec.function_id %>
+    <%= form.number_field :function_id, id: :spec_function_id, value: function_id %>
   </div>
 
   <div class="actions">

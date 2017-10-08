@@ -3,4 +3,4 @@
 <%= render 'form', section: @section %>
 
 <%= link_to 'Destroy', @section, method: :delete, data: { confirm: 'Are you sure?' } %>
-<%= link_to 'Back', @chapter %>
+<%= link_to 'Back', @section.chapter %>

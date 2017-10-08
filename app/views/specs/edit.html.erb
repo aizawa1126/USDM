@@ -3,4 +3,4 @@
 <%= render 'form', spec: @spec %>
 
 <%= link_to 'Destroy', @spec, method: :delete, data: { confirm: 'Are you sure?' } %>
-<%= link_to 'Back', @chapter %>
+<%= link_to 'Back', @spec.function.requirement.section.chapter %>

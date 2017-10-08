@@ -1,4 +1,4 @@
-<%= form_with(model: function, local: true) do |form| %>
+<%= form_with(model: function, url: params[:requirement_id].nil? ? function_path : requirement_functions_path, local: true) do |form| %>
   <% if function.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(function.errors.count, "error") %> prohibited this function from being saved:</h2>
@@ -18,7 +18,8 @@
 
   <div class="field" hidden>
     <%= form.label :requirement_id %>
-    <%= form.number_field :requirement_id, id: :function_requirement_id, value: @requirement.id %>
+    <% requirement_id = !params[:requirement_id].nil? ? params[:requirement_id] : @function.requirement_id %>
+    <%= form.number_field :requirement_id, id: :function_requirement_id, value: requirement_id %>
   </div>
 
   <div class="actions">

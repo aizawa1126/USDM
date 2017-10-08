@@ -1,18 +1,14 @@
 class RequirementsController < ApplicationController
-  before_action :set_requirement, only: [:show, :edit, :update, :destroy]
-  before_action :set_chapter, only: [:create, :update]
+  before_action :set_requirement, only: [:edit, :update, :destroy]
 
   # GET /requirements/new
   def new
     @requirement = Requirement.new
-    @section = Section.find(params[:section_id])
-    @chapter = Chapter.find(@section.chapter_id)
+    @chapter = Section.find(params[:section_id]).chapter
   end
 
   # GET /requirements/1/edit
   def edit
-    @section = Section.find(@requirement.section_id)
-    @chapter = Chapter.find(@section.chapter_id)
   end
 
   # POST /requirements
@@ -22,7 +18,8 @@ class RequirementsController < ApplicationController
 
     respond_to do |format|
       if @requirement.save
-        format.html { redirect_to chapter_path(@chapter.id, anchor: html_tag_id(@requirement)), notice: 'Requirement was successfully created.' }
+        chapter = @requirement.section.chapter
+        format.html { redirect_to chapter_path(chapter, anchor: html_tag_id(@requirement)), notice: 'Requirement was successfully created.' }
         format.json { render :show, status: :created, location: @requirement }
       else
         format.html { render :new }
@@ -36,7 +33,8 @@ class RequirementsController < ApplicationController
   def update
     respond_to do |format|
       if @requirement.update(requirement_params)
-        format.html { redirect_to chapter_path(@chapter, anchor: html_tag_id(@requirement)), notice: 'Requirement was successfully updated.' }
+        chapter = @requirement.section.chapter
+        format.html { redirect_to chapter_path(chapter, anchor: html_tag_id(@requirement)), notice: 'Requirement was successfully updated.' }
         format.json { render :show, status: :ok, location: @requirement }
       else
         format.html { render :edit }
@@ -48,11 +46,10 @@ class RequirementsController < ApplicationController
   # DELETE /requirements/1
   # DELETE /requirements/1.json
   def destroy
-    @section = Section.find(@requirement.section_id)
-    @chapter = Chapter.find(@section.chapter_id)
+    chapter = @requirement.section.chapter
     @requirement.destroy
     respond_to do |format|
-      format.html { redirect_to chapter_path(@chapter), notice: 'Section was successfully destroyed.' }
+      format.html { redirect_to chapter_path(chapter), notice: 'Section was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -61,11 +58,6 @@ class RequirementsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_requirement
       @requirement = Requirement.find(params[:id])
-    end
-
-    def set_chapter
-      @section = Section.find(params[:requirement][:section_id])
-      @chapter = Chapter.find(@section.chapter_id)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

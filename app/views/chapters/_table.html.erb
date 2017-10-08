@@ -48,13 +48,13 @@
   </tr>
         <% end %>
   <tr>
-    <td colspan="6"><%= link_to '仕様を追加', new_spec_path(function_id: function.id) %></td>
+    <td colspan="6"><%= link_to '仕様を追加', new_function_spec_path(function) %></td>
   </tr>
       <% end %>
-      <td colspan="6"><%= link_to '機能を追加', new_function_path(requirement_id: requirement.id) %></td>
+      <td colspan="6"><%= link_to '機能を追加', new_requirement_function_path(requirement) %></td>
     <% end %>
   <tr>
-    <td colspan="6" class="category"><%= link_to '要求を追加', new_requirement_path(chapter_id: @chapter.id, section_id: section.id) %></td>
+    <td colspan="6" class="category"><%= link_to '要求を追加', new_section_requirement_path(section) %></td>
   </tr>
   <% end %>
 <% end %>

@@ -1,20 +1,14 @@
 class FunctionsController < ApplicationController
-  before_action :set_function, only: [:show, :edit, :update, :destroy]
-  before_action :set_chapter, only: [:create, :update]
+  before_action :set_function, only: [:edit, :update, :destroy]
 
   # GET /functions/new
   def new
     @function = Function.new
-    @requirement = Requirement.find(params[:requirement_id])
-    @section = Section.find(@requirement.section_id)
-    @chapter = Chapter.find(@section.chapter_id)
+    @chapter = Requirement.find(params[:requirement_id]).section.chapter
   end
 
   # GET /functions/1/edit
   def edit
-    @requirement = Requirement.find(@function.requirement_id)
-    @section = Section.find(@requirement.section_id)
-    @chapter = Chapter.find(@section.chapter_id)
   end
 
   # POST /functions
@@ -24,7 +18,8 @@ class FunctionsController < ApplicationController
 
     respond_to do |format|
       if @function.save
-        format.html { redirect_to chapter_path(@chapter.id, anchor: html_tag_id(@function)), notice: 'Requirement was successfully created.' }
+        chapter = @function.requirement.section.chapter
+        format.html { redirect_to chapter_path(chapter, anchor: html_tag_id(@function)), notice: 'Requirement was successfully created.' }
         format.json { render :show, status: :created, location: @function }
       else
         format.html { render :new }
@@ -38,7 +33,8 @@ class FunctionsController < ApplicationController
   def update
     respond_to do |format|
       if @function.update(function_params)
-        format.html { redirect_to chapter_path(@chapter, anchor: html_tag_id(@function)), notice: 'Requirement was successfully updated.' }
+        chapter = @function.requirement.section.chapter
+        format.html { redirect_to chapter_path(chapter, anchor: html_tag_id(@function)), notice: 'Requirement was successfully updated.' }
         format.json { render :show, status: :ok, location: @function }
       else
         format.html { render :edit }
@@ -50,12 +46,10 @@ class FunctionsController < ApplicationController
   # DELETE /functions/1
   # DELETE /functions/1.json
   def destroy
-    @requirement = Requirement.find(@function.requirement_id)
-    @section = Section.find(@requirement.section_id)
-    @chapter = Chapter.find(@section.chapter_id)
+    chapter = @function.requirement.section.chapter
     @function.destroy
     respond_to do |format|
-      format.html { redirect_to chapter_path(@chapter), notice: 'Function was successfully destroyed.' }
+      format.html { redirect_to chapter_path(chapter), notice: 'Function was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -64,12 +58,6 @@ class FunctionsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_function
       @function = Function.find(params[:id])
-    end
-
-    def set_chapter
-      @requirement = Requirement.find(params[:function][:requirement_id])
-      @section = Section.find(@requirement.section_id)
-      @chapter = Chapter.find(@section.chapter_id)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
