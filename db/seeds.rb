@@ -38,4 +38,4 @@ Permission.create(role_id: 4, operation_id: 7)
 
 Permission.create(role_id: 5, operation_id: 3)
 
-User.create(id: 1, name: 'admin', password: 'admin', admin: true)
+User.create(id: 1, name: 'admin', email: 'admin@sample.com', password: 'administrator', password_confirmation: 'administrator', admin: true)

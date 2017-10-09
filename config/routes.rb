@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get    'login'   => 'sessions#new'
+  post   'login'   => 'sessions#create'
+  delete 'logout'  => 'sessions#destroy'
+
   resources :users
   resources :specifications, shallow: true do
     resources :chapters, only: [:show, :new, :create, :edit, :update, :destroy], shallow: true do

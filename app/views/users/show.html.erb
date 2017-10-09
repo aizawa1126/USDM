@@ -6,13 +6,9 @@
 </p>
 
 <p>
-  <strong>Password:</strong>
-  <%= @user.password %>
+  <strong>Email:</strong>
+  <%= @user.email %>
 </p>
-
-<% @user.specifications.each do |specification|%>
-  <p><%= specification.title %></p>
-<% end %>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
