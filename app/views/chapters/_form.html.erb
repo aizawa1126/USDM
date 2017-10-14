@@ -12,17 +12,17 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :number %>
+    <%= form.label :number, "章番号" %>
     <%= form.number_field :number, id: :chapter_number %>
   </div>
 
   <div class="field">
-    <%= form.label :name %>
+    <%= form.label :name, "章タイトル" %>
     <%= form.text_field :name, id: :chapter_name %>
   </div>
 
   <div class="field">
-    <%= form.label :prefix %>
+    <%= form.label :prefix, "プレフィックス" %>
     <%= form.text_field :prefix, id: :chapter_prefix %>
   </div>
 

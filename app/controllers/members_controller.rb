@@ -6,6 +6,7 @@ class MembersController < ApplicationController
   # GET /members.json
   def index
     @members = Member.where(specification_id: params[:specification_id].to_i)
+    @specification = Specification.find(params[:specification_id])
   end
 
   # GET /members/new

@@ -1,4 +1,12 @@
-<h1>New Chapter</h1>
+<div id="header">
+  <h1><%= @specification.title %></h1>
+  <div id="main-menu">
+    <ul>
+      <li><%= link_to '表紙に戻る', @specification %></li>
+    </ul>
+  </div>
+</div>
 
+<div id="contentsArea">
 <%= render 'form', chapter: @chapter %>
-<%= link_to 'Back', @specification %>
+</div>

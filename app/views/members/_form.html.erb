@@ -16,7 +16,7 @@
       <p>User</p>
       <p><%= @member.user.name %></p>
     <% else %>
-      <%= form.label :user_id %>
+      <%= form.label :user_id, 'ユーザー' %>
       <% name_selector = [] %>
       <% @users.each do |user| %>
         <% name_selector.push([user.name, user.id]) unless user.admin? %>
@@ -32,23 +32,23 @@
 
   <div class="member_roles">
     <%= fields_for :member_roles do |mr| %>
-      <%= mr.label :administrator %>
+      <%= mr.label :administrator, 'プロジェクト管理者' %>
       <% is_checked = !@member.member_roles.find_by(role_id: set_role_id("administrator")).nil? %>
       <%= mr.check_box :administrator, checked: is_checked %>
 
-      <%= mr.label :customer %>
+      <%= mr.label :customer, '顧客' %>
       <% is_checked = !@member.member_roles.find_by(role_id: set_role_id("customer")).nil? %>
       <%= mr.check_box :customer, checked: is_checked %>
 
-      <%= mr.label :designer %>
+      <%= mr.label :designer, '設計者' %>
       <% is_checked = !@member.member_roles.find_by(role_id: set_role_id("designer")).nil? %>
       <%= mr.check_box :designer, checked: is_checked %>
 
-      <%= mr.label :tester %>
+      <%= mr.label :tester, 'テスター' %>
       <% is_checked = !@member.member_roles.find_by(role_id: set_role_id("tester")).nil? %>
       <%= mr.check_box :tester, checked: is_checked %>
 
-      <%= mr.label :guest %>
+      <%= mr.label :guest, 'ゲスト' %>
       <% is_checked = !@member.member_roles.find_by(role_id: set_role_id("guest")).nil? %>
       <%= mr.check_box :guest, checked: is_checked %>
 

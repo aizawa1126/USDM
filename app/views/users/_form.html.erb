@@ -12,22 +12,22 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
+    <%= form.label :name, 'ユーザー名' %>
     <%= form.text_field :name, id: :user_name %>
   </div>
 
   <div class="field">
-    <%= form.label :email %>
+    <%= form.label :email, 'メールアドレス' %>
     <%= form.email_field :email, id: :user_email %>
   </div>
 
   <div class="field">
-    <%= form.label :password %>
+    <%= form.label :password, 'パスワード' %>
     <%= form.password_field :password, id: :user_password %>
   </div>
 
   <div class="field">
-    <%= form.label :password_confirmation %>
+    <%= form.label :password_confirmation, 'パスワード（確認用）' %>
     <%= form.password_field :password_confirmation, id: :user_password_confirmation %>
   </div>
 

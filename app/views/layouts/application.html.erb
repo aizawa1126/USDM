@@ -9,29 +9,26 @@
   </head>
 
   <body>
-    <div id="headerArea">
-      <div class="logo">
-      <% if !@specification.nil? %>
-      <%= link_to @specification.title, @specification %>
-      <% else %>
-      <%= link_to "仕様書一覧", root_path %>
-      <% end %>
-      </div>
-      <ul class="menu">
+    <div id="top-menu">
+      <ul>
+        <li><%= link_to "ホーム", root_path %></li>
         <% if logged_in? %>
-        <% if current_user.admin %>
+          <% if current_user.admin %>
         <li><%= link_to "ユーザー管理", users_path %></li>
-        <% end %>
-        <li><%= link_to current_user.name, current_user %></li>
-        <li><%= link_to "Log out", logout_path, method: "delete" %></li>
-        <% else %>
-        <li><%= link_to "Log in", login_path %></li>
+          <% end %>
         <% end %>
       </ul>
+      <div id="account">
+        <ul>
+          <% if logged_in? %>
+          <li><%= link_to current_user.name, current_user %></li>
+          <li><%= link_to "ログアウト", logout_path, method: "delete" %></li>
+          <% else %>
+          <li><%= link_to "ログイン", login_path %></li>
+          <% end %>
+        </ul>
+      </div>
     </div>
-    <div id="contentsArea">
     <%= yield %>
-    </div>
-    <div id="footerArea">Footer</div>
   </body>
 </html>

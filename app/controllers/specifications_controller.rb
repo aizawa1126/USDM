@@ -1,5 +1,6 @@
 class SpecificationsController < ApplicationController
   before_action :set_specification, only: [:show, :edit, :update, :destroy]
+  before_action :has_read_operation, only: [:show]
 
   # GET /specifications
   # GET /specifications.json

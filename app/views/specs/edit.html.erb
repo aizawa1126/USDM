@@ -1,6 +1,13 @@
-<h1>Editing Spec</h1>
+<div id="header">
+  <h1><%= @spec.function.requirement.section.chapter.specification.title %></h1>
+  <div id="main-menu">
+    <ul>
+      <li><%= link_to '仕様を削除', @spec, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+      <li><%= link_to '戻る', @spec.function.requirement.section.chapter %></li>
+    </ul>
+  </div>
+</div>
 
+<div id="contentsArea">
 <%= render 'form', spec: @spec %>
-
-<%= link_to 'Destroy', @spec, method: :delete, data: { confirm: 'Are you sure?' } %>
-<%= link_to 'Back', @spec.function.requirement.section.chapter %>
+</div>

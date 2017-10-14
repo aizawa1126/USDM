@@ -12,22 +12,22 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :number %>
+    <%= form.label :number, '要求番号' %>
     <%= form.number_field :number, id: :requirement_number %>
   </div>
 
   <div class="field">
-    <%= form.label :content %>
+    <%= form.label :content, '要求内容' %>
     <%= form.text_field :content, id: :requirement_content %>
   </div>
 
   <div class="field">
-    <%= form.label :reason %>
+    <%= form.label :reason, '理由' %>
     <%= form.text_field :reason, id: :requirement_reason %>
   </div>
 
   <div class="field">
-    <%= form.label :description %>
+    <%= form.label :description, '説明' %>
     <%= form.text_field :description, id: :requirement_description %>
   </div>
 

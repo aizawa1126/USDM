@@ -1,6 +1,13 @@
-<h1>Editing Function</h1>
+<div id="header">
+  <h1><%= @function.requirement.section.chapter.specification.title %></h1>
+  <div id="main-menu">
+    <ul>
+      <li><%= link_to '機能を削除', @function, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+      <li><%= link_to '戻る', @function.requirement.section.chapter %></li>
+    </ul>
+  </div>
+</div>
 
+<div id="contentsArea">
 <%= render 'form', function: @function %>
-
-<%= link_to 'Destroy', @function, method: :delete, data: { confirm: 'Are you sure?' } %>
-<%= link_to 'Back', @function.requirement.section.chapter %>
+</div>

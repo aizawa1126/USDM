@@ -1,5 +1,12 @@
-<h1>New Requirement</h1>
+<div id="header">
+  <h1><%= @chapter.specification.title %></h1>
+  <div id="main-menu">
+    <ul>
+      <li><%= link_to '戻る', @chapter %></li>
+    </ul>
+  </div>
+</div>
 
+<div id="contentsArea">
 <%= render 'form', requirement: @requirement %>
-
-<%= link_to '戻る', @chapter %>
+</div>

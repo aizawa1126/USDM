@@ -1,3 +1,13 @@
+<div id="header">
+  <h1><%= @chapter.specification.title %></h1>
+  <div id="main-menu">
+    <ul>
+      <li><%= link_to 'カテゴリを追加', new_chapter_section_path(@chapter) %></li>
+    </ul>
+  </div>
+</div>
+
+<div id="contentsArea">
 <table border="5" rules="all">
   <tr>
     <th class="category">カテゴリ名</th>
@@ -8,13 +18,10 @@
   </tr>
   <% if !hasSections? %>
   <tr>
-    <td colspan="7" class="category"><%= link_to 'カテゴリを追加', new_chapter_section_path(@chapter) %></td>
+    <td colspan="7" class="category"></td>
   </tr>
   <% else %>
   <%= render 'table', chapter: @chapter %>
   <% end %>
 </table>
-
-<% if @chapter.sections.count != 0 %>
-<%= link_to 'カテゴリを追加', new_chapter_section_path(@chapter) %>
-<% end %>
+</div>

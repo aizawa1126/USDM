@@ -1,5 +1,12 @@
-<h1>New Member</h1>
+<div id="header">
+  <h1><%= @specification.title %></h1>
+  <div id="main-menu">
+    <ul>
+      <li><%= link_to '戻る', specification_members_path(@specification.id) %></li>
+    </ul>
+  </div>
+</div>
 
+<div id="contentsArea">
 <%= render 'form', member: @member %>
-
-<%= link_to 'Back', specification_members_path(@specification.id) %>
+</div>

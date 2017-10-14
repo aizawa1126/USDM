@@ -1,6 +1,12 @@
-<h1>Editing User</h1>
+<div id="header">
+  <h1><%= "Project Name" %></h1>
+  <div id="main-menu">
+    <ul>
+      <li><%= link_to 'ユーザー情報', @user %></li>
+    </ul>
+  </div>
+</div>
 
+<div id="contentsArea">
 <%= render 'form', user: @user %>
-
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+</div>

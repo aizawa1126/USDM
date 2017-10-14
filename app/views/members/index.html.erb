@@ -1,7 +1,13 @@
-<p id="notice"><%= notice %></p>
+<div id="header">
+  <h1><%= @specification.title %></h1>
+  <div id="main-menu">
+    <ul>
+      <li><%= link_to 'メンバー登録', new_specification_member_path(params[:specification_id]) %></li>
+    </ul>
+  </div>
+</div>
 
-<h1>Members</h1>
-
+<div id="contentsArea">
 <table>
   <thead>
     <tr>
@@ -14,12 +20,9 @@
     <% @members.each do |member| %>
       <tr>
         <td><%= link_to member.user.name, edit_member_path(member) %></td>
-        <td><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'メンバーを削除', member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Member', new_specification_member_path(params[:specification_id]) %>
+</div>

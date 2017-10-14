@@ -1,3 +1,14 @@
+<div id="header">
+  <h1><%= @specification.title %></h1>
+  <div id="main-menu">
+    <ul>
+      <li><%= link_to '章を追加', new_specification_chapter_path(@specification) %></li>
+      <li><%= link_to '表紙を編集', edit_specification_path(@specification) %></li>
+    </ul>
+  </div>
+</div>
+
+<div id="contentsArea">
 <p id="notice"><%= notice %></p>
 
 <p class="document_name">
@@ -23,14 +34,10 @@
   <%= link_to chapter.name, chapter_path(chapter.id) %>
     </td>
     <td>
-    <%= link_to 'Edit', edit_chapter_path(chapter) %>
+    <%= link_to '編集', edit_chapter_path(chapter) %>
     </td>
 
 <% end %>
   </tbody>
 </table>
-
-<%= link_to '章を追加', new_specification_chapter_path(@specification) %>
-
-<%= link_to '表紙を編集', edit_specification_path(@specification) %> |
-<%= link_to 'トップへ戻る', specifications_path %>
+</div>

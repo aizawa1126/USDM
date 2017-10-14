@@ -1,16 +1,20 @@
-<% provide(:title, "Log in") %>
-<h1>Log in</h1>
+<div id="header">
+  <h1><%= "Project Name" %></h1>
+  <div id="main-menu">
+  </div>
+</div>
 
+<div id="contentsArea">
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_with(scope: :session, url: login_path, local: true) do |form| %>
     <div class="field">
-      <%= form.label :email %>
+      <%= form.label :email, 'メールアドレス' %>
       <%= form.email_field :email, id: :user_email %>
     </div>
 
     <div class="field">
-      <%= form.label :password %>
+      <%= form.label :password, 'パスワード' %>
       <%= form.password_field :password, id: :user_password %>
     </div>
     <div class="actions">
@@ -18,4 +22,5 @@
     </div>
     <% end %>
   </div>
+</div>
 </div>

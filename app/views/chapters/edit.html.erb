@@ -1,6 +1,13 @@
-<h1>Editing Chapter</h1>
+<div id="header">
+  <h1><%= @chapter.specification.title %></h1>
+  <div id="main-menu">
+    <ul>
+      <li><%= link_to '表紙に戻る', @chapter.specification %></li>
+      <li><%= link_to '章を削除', @chapter, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+    </ul>
+  </div>
+</div>
 
+<div id="contentsArea">
 <%= render 'form', chapter: @chapter %>
-
-<%= link_to 'Destroy', @chapter, method: :delete, data: { confirm: 'Are you sure?' } %>
-<%= link_to '表紙に戻る', specification_path(@chapter.specification_id) %>
+</div>

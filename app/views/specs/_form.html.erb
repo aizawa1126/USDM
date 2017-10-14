@@ -12,27 +12,27 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :number %>
+    <%= form.label :number, '仕様番号' %>
     <%= form.number_field :number, id: :spec_number %>
   </div>
 
   <div class="field">
-    <%= form.label :content %>
+    <%= form.label :content, '仕様内容' %>
     <%= form.text_area :content, id: :spec_content %>
   </div>
 
   <div class="field">
-    <%= form.label :customer_review %>
+    <%= form.label :customer_review, '顧客チェック' %>
     <%= form.check_box :customer_review %>
   </div>
 
   <div class="field">
-    <%= form.label :design_review %>
+    <%= form.label :design_review, '設計レビュー' %>
     <%= form.check_box :design_review %>
   </div>
 
   <div class="field">
-    <%= form.label :test_review %>
+    <%= form.label :test_review, 'テスト設計' %>
     <%= form.check_box :test_review %>
   </div>
 
