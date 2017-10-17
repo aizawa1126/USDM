@@ -10,4 +10,8 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
+
+  def activate!
+    update_attribute(:status, "active")
+  end
 end

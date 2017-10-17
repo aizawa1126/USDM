@@ -11,8 +11,9 @@
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th colspan="1"></th>
+      <th>名前</th>
+      <th>状態</th>
+      <th colspan="2">操作</th>
     </tr>
   </thead>
 
@@ -20,7 +21,12 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.name %></td>
-
+        <td><%= user.status %></td>
+        <td>
+          <% if user.status == "registered" %>
+          <%= link_to '承認する', activate_user_path(user), method: :post %>
+          <% end %>
+        </td>
         <td>
           <% if !user.admin? %>
           <%= link_to '削除', user, method: :delete, data: { confirm: 'Are you sure?' } %>

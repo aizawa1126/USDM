@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
 
-  resources :users
+  resources :users do
+    member do
+      post :activate
+    end
+  end
   resources :specifications, shallow: true do
     resources :chapters, only: [:show, :new, :create, :edit, :update, :destroy], shallow: true do
       resources :sections, only: [:new, :create, :edit, :update, :destroy], shallow: true do

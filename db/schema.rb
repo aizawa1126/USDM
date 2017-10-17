@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171009025030) do
+ActiveRecord::Schema.define(version: 20171017140338) do
 
   create_table "chapters", force: :cascade do |t|
     t.integer "number"
@@ -104,6 +104,7 @@ ActiveRecord::Schema.define(version: 20171009025030) do
     t.boolean "admin"
     t.string "password_digest"
     t.string "email"
+    t.string "status", default: "registered"
   end
 
 end

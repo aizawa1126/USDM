@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :activate ,:destroy]
 
   # GET /users
   # GET /users.json
@@ -50,6 +50,11 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def activate
+    @user.activate!
+    redirect_to users_path
   end
 
   # DELETE /users/1
