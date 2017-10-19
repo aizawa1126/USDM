@@ -1,7 +1,29 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
+user_create:
+  id: 1
+  name: user create
 
-two:
-  name: MyString
+member_create:
+  id: 2
+  name: member create
+
+read:
+  id: 3
+  name: read
+
+write:
+  id: 4
+  name: write
+
+customor_review_check:
+  id: 5
+  name: customor review check
+
+design_review_check:
+  id: 6
+  name: design review check
+
+tester_review_check:
+  id: 7
+  name: tester review check

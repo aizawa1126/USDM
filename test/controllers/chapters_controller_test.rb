@@ -2,25 +2,21 @@ require 'test_helper'
 
 class ChaptersControllerTest < ActionDispatch::IntegrationTest
   setup do
+    @specification = specifications(:one)
     @chapter = chapters(:one)
   end
 
-  test "should get index" do
-    get chapters_url
-    assert_response :success
-  end
-
   test "should get new" do
-    get new_chapter_url
+    get new_specification_chapter_url(@specification)
     assert_response :success
   end
 
   test "should create chapter" do
     assert_difference('Chapter.count') do
-      post chapters_url, params: { chapter: { name: @chapter.name, number: @chapter.number, prefix: @chapter.prefix, specification_id: @chapter.specification_id } }
+      post specification_chapters_url(@specification), params: { chapter: { name: @chapter.name, number: @chapter.number, prefix: @chapter.prefix, specification_id: @chapter.specification_id } }
     end
 
-    assert_redirected_to chapter_url(Chapter.last)
+    assert_redirected_to specification_url(@specification)
   end
 
   test "should show chapter" do
@@ -35,7 +31,7 @@ class ChaptersControllerTest < ActionDispatch::IntegrationTest
 
   test "should update chapter" do
     patch chapter_url(@chapter), params: { chapter: { name: @chapter.name, number: @chapter.number, prefix: @chapter.prefix, specification_id: @chapter.specification_id } }
-    assert_redirected_to chapter_url(@chapter)
+    assert_redirected_to specification_url(@specification)
   end
 
   test "should destroy chapter" do
@@ -43,6 +39,6 @@ class ChaptersControllerTest < ActionDispatch::IntegrationTest
       delete chapter_url(@chapter)
     end
 
-    assert_redirected_to chapters_url
+    assert_redirected_to specification_url(@specification)
   end
 end

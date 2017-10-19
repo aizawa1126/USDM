@@ -1,6 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   number: 1
   content: MyString
   reason: MyString
@@ -8,8 +9,9 @@ one:
   section_id: 1
 
 two:
+  id: 2
   number: 1
   content: MyString
   reason: MyString
   description: MyString
-  section_id: 1
+  section_id: 2

@@ -1,9 +1,53 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+admin_ope_1:
   role_id: 1
   operation_id: 1
 
-two:
+admin_ope_2:
   role_id: 1
-  operation_id: 1
+  operation_id: 2
+
+admin_ope_3:
+  role_id: 1
+  operation_id: 3
+
+admin_ope_4:
+  role_id: 1
+  operation_id: 4
+
+cust_ope_3:
+  role_id: 2
+  operation_id: 3
+
+cust_ope_4:
+  role_id: 2
+  operation_id: 4
+
+cust_ope_5:
+  role_id: 2
+  operation_id: 5
+
+desi_ope_3:
+  role_id: 3
+  operation_id: 3
+
+desi_ope_4:
+  role_id: 3
+  operation_id: 4
+
+desi_ope_6:
+  role_id: 3
+  operation_id: 6
+
+test_ope_3:
+  role_id: 4
+  operation_id: 3
+
+test_ope_7:
+  role_id: 4
+  operation_id: 7
+
+gues_ope_3:
+  role_id: 5
+  operation_id: 3

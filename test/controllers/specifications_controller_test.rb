@@ -23,11 +23,6 @@ class SpecificationsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to specification_url(Specification.last)
   end
 
-  test "should show specification" do
-    get specification_url(@specification)
-    assert_response :success
-  end
-
   test "should get edit" do
     get edit_specification_url(@specification)
     assert_response :success

@@ -1,9 +1,20 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  password: MyString
-
+  id: 1
+  name: a
+  admin: false
+  email: a@a.com
+  status: active
 two:
-  name: MyString
-  password: MyString
+  id: 2
+  name: b
+  admin: false
+  email: b@b.com
+  status: registered
+admin:
+  id: 3
+  name: admin
+  admin: true
+  email: admin@admin.com
+  status: active
