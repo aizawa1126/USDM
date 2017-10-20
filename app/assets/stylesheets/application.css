@@ -112,3 +112,48 @@ h1 {
   color: #fff;
   font-size: 12px;
 }
+
+tr.spec td.description {
+  line-height: 0.3em;
+  padding-top:0.3em;
+}
+
+td.description p {
+  margin: 0;
+  padding: 0;
+  line-height: 1.3em;
+}
+td.description ul {
+  margin: 0;
+  padding: 0;
+  padding-left: 1.3em;
+  line-height: 0.3em;
+}
+td.description li {
+  list-style: disc;
+  line-height: 1.3em;
+}
+td.description table th,
+td.description table td {
+  line-height: 1em;
+  background-color: #fff;
+}
+td.description table {
+  border-collapse:collapse;
+}
+td.description table th {
+  border-bottom:1px #666 solid;
+  padding-right: 0.7em;
+}
+
+td.description a {
+  color: #169;
+  text-decoration: underline;
+}
+
+td.description a:hover {
+  color: #c61a1a;
+  background-color: #fff;
+  text-decoration: underline;
+}
+

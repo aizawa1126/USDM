@@ -36,6 +36,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'wkhtmltopdf-binary'
 gem 'wicked_pdf'
 gem 'bcrypt'
+gem 'redcarpet', '~> 2.3.0'
+gem 'coderay'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
