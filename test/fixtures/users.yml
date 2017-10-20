@@ -6,15 +6,20 @@ one:
   admin: false
   email: a@a.com
   status: active
+  password_digest: <%= User.digest('password') %>
+
 two:
   id: 2
   name: b
   admin: false
   email: b@b.com
   status: registered
+  password_digest: <%= User.digest('password') %>
+
 admin:
   id: 3
   name: admin
   admin: true
   email: admin@admin.com
   status: active
+  password_digest: <%= User.digest('administrator') %>
