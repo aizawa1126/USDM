@@ -7,30 +7,28 @@
     <th class="note" >備考</th>
   </tr>
 
-  <% if !hasSections? %>
-  <% else %>
-    <% @chapter.sections.order("number").each do |section| %>
-      <% isFirstRequirement = true %>
-      <% if !hasRequirements?(section) %>
+  <% @chapter.sections.order("number").each do |section| %>
+    <% isFirstRequirement = true %>
+    <% if !hasRequirements?(section) %>
   <tr>
     <td rowspan="1" class="category">
-        <%= @chapter.number%>.<%= section.number%><br/>
-        <%= section.name %>
+      <%= @chapter.number%>.<%= section.number%><br/>
+      <%= section.name %>
     </td>
     <td colspan="6"></td>
   </tr>
-      <% else #if !hasRequirements?(section) %>
-        <% section.requirements.order("number").each do |requirement| %>
+    <% else #if !hasRequirements?(section) %>
+      <% section.requirements.order("number").each do |requirement| %>
   <tr>
-          <% if isFirstRequirement %>
+        <% if isFirstRequirement %>
     <td rowspan="<%= rowspan_pdf(section.id) %>" class="category">
-            <%= @chapter.number%>.<%= section.number%><br/>
-            <%= section.name %>
+          <%= @chapter.number%>.<%= section.number%><br/>
+          <%= section.name %>
     </td>
-          <% end #if isFirstRequirement %>
-          <% isFirstRequirement = false %>
+        <% end #if isFirstRequirement %>
+        <% isFirstRequirement = false %>
     <td colspan="3" rowspan="3" class="requirement_summary">要求</td>
-          <% req_num = @chapter.prefix + "-" + requirement.number.to_s%>
+        <% req_num = @chapter.prefix + "-" + requirement.number.to_s%>
     <td class="requirement_summary"><%= req_num %></td>
     <td class="requirement_summary description"><%= requirement.content %></td>
     <td class="requirement_summary"></td>
@@ -45,27 +43,26 @@
     <td class="description"><%= requirement.description %></td>
     <td></td>
   </tr>
-           <% requirement.functions.each do |function| %>
+        <% requirement.functions.each do |function| %>
   <tr>
     <td colspan="6" class="function"><%= "<"+function.name+">" %></td>
   </tr>
-             <% function.specs.each do |spec| %>
+          <% function.specs.each do |spec| %>
   <tr class="spec">
-               <% checked = spec.customer_review ? "checked" : "unchecked"%>
+            <% checked = spec.customer_review ? "checked" : "unchecked"%>
     <td class="check_specification <%= checked %>"></td>
-               <% checked = spec.design_review ? "checked" : "unchecked"%>
+            <% checked = spec.design_review ? "checked" : "unchecked"%>
     <td class="design_review <%= checked %>"></td>
-               <% checked = spec.test_review ? "checked" : "unchecked"%>
+            <% checked = spec.test_review ? "checked" : "unchecked"%>
     <td class="test_design <%= checked %>"></td>
-               <% spec_num = @chapter.prefix + "-" + requirement.number.to_s + "-" + spec.number.to_s %>
+            <% spec_num = @chapter.prefix + "-" + requirement.number.to_s + "-" + spec.number.to_s %>
     <td><%= spec_num %></td>
-    <td class="description"><%= spec.content %></td>
+    <td class="description"><%= markdown(spec.content) %></td>
     <td></td>
   </tr>
-            <% end #each do |spec| %>
-          <% end #each do |function| %>
-        <% end #each do |requirement| %>
-      <% end #if !hasRequirements?(section) %>
-    <% end #each do |section| %>
-  <% end #if !hasSections? %>
+          <% end #each do |spec| %>
+        <% end #each do |function| %>
+      <% end #each do |requirement| %>
+    <% end #if !hasRequirements?(section) %>
+  <% end #each do |section| %>
 </table>
