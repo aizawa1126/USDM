@@ -37,7 +37,7 @@ class SpecificationsController < ApplicationController
 
     respond_to do |format|
       if @specification.save
-        format.html { redirect_to @specification, notice: 'Specification was successfully created.' }
+        format.html { redirect_to @specification }
         format.json { render :show, status: :created, location: @specification }
       else
         format.html { render :new }
@@ -51,7 +51,7 @@ class SpecificationsController < ApplicationController
   def update
     respond_to do |format|
       if @specification.update(specification_params)
-        format.html { redirect_to @specification, notice: 'Specification was successfully updated.' }
+        format.html { redirect_to @specification }
         format.json { render :show, status: :ok, location: @specification }
       else
         format.html { render :edit }
@@ -65,7 +65,7 @@ class SpecificationsController < ApplicationController
   def destroy
     @specification.destroy
     respond_to do |format|
-      format.html { redirect_to specifications_url, notice: 'Specification was successfully destroyed.' }
+      format.html { redirect_to specifications_url }
       format.json { head :no_content }
     end
   end

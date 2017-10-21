@@ -32,7 +32,7 @@ class MembersController < ApplicationController
         end
       end
     end
-    redirect_to specification_members_path(@specification.id), notice: 'Member was successfully created.'
+    redirect_to specification_members_path(@specification.id)
   rescue
     @users = User.all
     @member = Member.new
@@ -59,7 +59,7 @@ class MembersController < ApplicationController
         end
       end
     end
-    redirect_to specification_members_path(@specification.id), notice: 'Member was successfully created.'
+    redirect_to specification_members_path(@specification.id)
   rescue
     render :edit
   end
@@ -71,7 +71,7 @@ class MembersController < ApplicationController
     @specification = @member.specification
     @member.destroy
     respond_to do |format|
-      format.html { redirect_to specification_members_path(@specification.id), notice: 'Member was successfully destroyed.' }
+      format.html { redirect_to specification_members_path(@specification.id) }
       format.json { head :no_content }
     end
   end

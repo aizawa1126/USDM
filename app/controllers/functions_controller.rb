@@ -19,7 +19,7 @@ class FunctionsController < ApplicationController
     respond_to do |format|
       if @function.save
         chapter = @function.requirement.section.chapter
-        format.html { redirect_to chapter_path(chapter, anchor: html_tag_id(@function)), notice: 'Requirement was successfully created.' }
+        format.html { redirect_to chapter_path(chapter, anchor: html_tag_id(@function)) }
         format.json { render :show, status: :created, location: @function }
       else
         format.html { render :new }
@@ -34,7 +34,7 @@ class FunctionsController < ApplicationController
     respond_to do |format|
       if @function.update(function_params)
         chapter = @function.requirement.section.chapter
-        format.html { redirect_to chapter_path(chapter, anchor: html_tag_id(@function)), notice: 'Requirement was successfully updated.' }
+        format.html { redirect_to chapter_path(chapter, anchor: html_tag_id(@function)) }
         format.json { render :show, status: :ok, location: @function }
       else
         format.html { render :edit }
@@ -49,7 +49,7 @@ class FunctionsController < ApplicationController
     chapter = @function.requirement.section.chapter
     @function.destroy
     respond_to do |format|
-      format.html { redirect_to chapter_path(chapter), notice: 'Function was successfully destroyed.' }
+      format.html { redirect_to chapter_path(chapter) }
       format.json { head :no_content }
     end
   end

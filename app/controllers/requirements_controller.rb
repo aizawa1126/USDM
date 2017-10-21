@@ -19,7 +19,7 @@ class RequirementsController < ApplicationController
     respond_to do |format|
       if @requirement.save
         chapter = @requirement.section.chapter
-        format.html { redirect_to chapter_path(chapter, anchor: html_tag_id(@requirement)), notice: 'Requirement was successfully created.' }
+        format.html { redirect_to chapter_path(chapter, anchor: html_tag_id(@requirement)) }
         format.json { render :show, status: :created, location: @requirement }
       else
         format.html { render :new }
@@ -34,7 +34,7 @@ class RequirementsController < ApplicationController
     respond_to do |format|
       if @requirement.update(requirement_params)
         chapter = @requirement.section.chapter
-        format.html { redirect_to chapter_path(chapter, anchor: html_tag_id(@requirement)), notice: 'Requirement was successfully updated.' }
+        format.html { redirect_to chapter_path(chapter, anchor: html_tag_id(@requirement)) }
         format.json { render :show, status: :ok, location: @requirement }
       else
         format.html { render :edit }
@@ -49,7 +49,7 @@ class RequirementsController < ApplicationController
     chapter = @requirement.section.chapter
     @requirement.destroy
     respond_to do |format|
-      format.html { redirect_to chapter_path(chapter), notice: 'Section was successfully destroyed.' }
+      format.html { redirect_to chapter_path(chapter) }
       format.json { head :no_content }
     end
   end

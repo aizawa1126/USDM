@@ -19,7 +19,7 @@ class SpecsController < ApplicationController
     respond_to do |format|
       if @spec.save
         chapter = @spec.function.requirement.section.chapter
-        format.html { redirect_to chapter_path(chapter, anchor: html_tag_id(@spec)), notice: 'Requirement was successfully created.' }
+        format.html { redirect_to chapter_path(chapter, anchor: html_tag_id(@spec)) }
         format.json { render :show, status: :created, location: @spec }
       else
         format.html { render :new }
@@ -34,7 +34,7 @@ class SpecsController < ApplicationController
     respond_to do |format|
       if @spec.update(spec_params)
         chapter = @spec.function.requirement.section.chapter
-        format.html { redirect_to chapter_path(chapter, anchor: html_tag_id(@spec)), notice: 'Section was successfully created.' }
+        format.html { redirect_to chapter_path(chapter, anchor: html_tag_id(@spec)) }
         format.json { render :show, status: :ok, location: @spec }
       else
         format.html { render :edit }
@@ -49,7 +49,7 @@ class SpecsController < ApplicationController
     chapter = @spec.function.requirement.section.chapter
     @spec.destroy
     respond_to do |format|
-      format.html { redirect_to chapter_path(chapter), notice: 'Spec was successfully destroyed.' }
+      format.html { redirect_to chapter_path(chapter) }
       format.json { head :no_content }
     end
   end
