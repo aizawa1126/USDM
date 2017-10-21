@@ -2,10 +2,12 @@
 
 one:
   id: 1
+  number: 1
   content: MyText
   function_id: 1
 
 two:
   id: 2
+  number: 2
   content: MyText
   function_id: 2

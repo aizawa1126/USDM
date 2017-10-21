@@ -15,7 +15,7 @@ class RequirementsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create requirement" do
     assert_difference('Requirement.count') do
-      post section_requirements_url(@section), params: { requirement: { content: @requirement.content, description: @requirement.description, number: @requirement.number, reason: @requirement.reason, section_id: @requirement.section_id } }
+      post section_requirements_url(@section), params: { requirement: { content: @requirement.content, description: @requirement.description, number: 9999, reason: @requirement.reason, section_id: @requirement.section_id } }
     end
 
     assert_redirected_to chapter_url(@chapter, anchor: "requirement_"+Requirement.last.id.to_s)

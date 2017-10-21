@@ -16,7 +16,7 @@ class FunctionsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create function" do
     assert_difference('Function.count') do
-      post requirement_functions_url(@requirement), params: { function: { name: @function.name, requirement_id: @function.requirement_id } }
+      post requirement_functions_url(@requirement), params: { function: { name: "new function name", requirement_id: @function.requirement_id } }
     end
 
     assert_redirected_to chapter_url(@chapter, anchor: "function_"+Function.last.id.to_s)

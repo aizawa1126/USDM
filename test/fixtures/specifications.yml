@@ -2,10 +2,10 @@
 
 one:
   id: 1
-  title: MyString
-  version: MyString
+  title: Specification 1
+  version: 1
 
 two:
   id: 2
-  title: MyString
-  version: MyString
+  title: Specification 2
+  version: 1

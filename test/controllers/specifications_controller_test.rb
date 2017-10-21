@@ -17,7 +17,7 @@ class SpecificationsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create specification" do
     assert_difference('Specification.count') do
-      post specifications_url, params: { specification: { title: @specification.title, version: @specification.version } }
+      post specifications_url, params: { specification: { title: "new specification title", version: 1 } }
     end
 
     assert_redirected_to specification_url(Specification.last)

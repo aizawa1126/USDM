@@ -14,7 +14,7 @@ class SectionsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create section" do
     assert_difference('Section.count') do
-      post chapter_sections_url(@section.chapter_id), params: { section: { chapter_id: @section.chapter_id.to_s, name: @section.name, number: @section.number.to_s }}
+      post chapter_sections_url(@section.chapter_id), params: { section: { chapter_id: @section.chapter_id.to_s, name: "new section name", number: 9999 }}
     end
 
     assert_redirected_to chapter_url(@chapter, anchor: "section_"+Section.last.id.to_s)

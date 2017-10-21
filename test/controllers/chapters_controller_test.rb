@@ -13,7 +13,7 @@ class ChaptersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create chapter" do
     assert_difference('Chapter.count') do
-      post specification_chapters_url(@specification), params: { chapter: { name: @chapter.name, number: @chapter.number, prefix: @chapter.prefix, specification_id: @chapter.specification_id } }
+      post specification_chapters_url(@specification), params: { chapter: { name: "new chapter name", number: 9999, prefix: "new chapter prefix", specification_id: @specification.id } }
     end
 
     assert_redirected_to specification_url(@specification)
