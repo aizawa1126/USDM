@@ -28,10 +28,11 @@ class ChaptersController < ApplicationController
   # POST /chapters.json
   def create
     @chapter = Chapter.new(chapter_params)
+    @specification = @chapter.specification
 
     respond_to do |format|
       if @chapter.save
-        format.html { redirect_to specification_path(@chapter.specification_id) }
+        format.html { redirect_to specification_path(@specification.id) }
         format.json { render :show, status: :created, location: @chapter }
       else
         format.html { render :new }

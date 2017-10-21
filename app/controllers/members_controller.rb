@@ -24,13 +24,18 @@ class MembersController < ApplicationController
 
     Member.transaction do
       @member.save!
+      no_role = true
+
       params[:member_roles].each do |role_name, value|
         if value.to_i == 1
+          no_role = false
           role_id = set_role_id(role_name)
           @member_role = MemberRole.new(member_id: @member.id, role_id: role_id)
           @member_role.save!
         end
       end
+
+      raise if no_role
     end
     redirect_to specification_members_path(@specification.id)
   rescue

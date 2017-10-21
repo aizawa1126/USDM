@@ -15,11 +15,10 @@ class RequirementsController < ApplicationController
   # POST /requirements.json
   def create
     @requirement = Requirement.new(requirement_params)
-
+    @chapter = @requirement.section.chapter
     respond_to do |format|
       if @requirement.save
-        chapter = @requirement.section.chapter
-        format.html { redirect_to chapter_path(chapter, anchor: html_tag_id(@requirement)) }
+        format.html { redirect_to chapter_path(@chapter, anchor: html_tag_id(@requirement)) }
         format.json { render :show, status: :created, location: @requirement }
       else
         format.html { render :new }

@@ -15,11 +15,10 @@ class SpecsController < ApplicationController
   # POST /specs.json
   def create
     @spec = Spec.new(spec_params)
-
+    @chapter = @spec.function.requirement.section.chapter
     respond_to do |format|
       if @spec.save
-        chapter = @spec.function.requirement.section.chapter
-        format.html { redirect_to chapter_path(chapter, anchor: html_tag_id(@spec)) }
+        format.html { redirect_to chapter_path(@chapter, anchor: html_tag_id(@spec)) }
         format.json { render :show, status: :created, location: @spec }
       else
         format.html { render :new }

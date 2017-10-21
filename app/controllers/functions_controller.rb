@@ -15,11 +15,10 @@ class FunctionsController < ApplicationController
   # POST /functions.json
   def create
     @function = Function.new(function_params)
-
+    @chapter = @function.requirement.section.chapter
     respond_to do |format|
       if @function.save
-        chapter = @function.requirement.section.chapter
-        format.html { redirect_to chapter_path(chapter, anchor: html_tag_id(@function)) }
+        format.html { redirect_to chapter_path(@chapter, anchor: html_tag_id(@function)) }
         format.json { render :show, status: :created, location: @function }
       else
         format.html { render :new }

@@ -15,11 +15,11 @@ class SectionsController < ApplicationController
   # POST /sections.json
   def create
     @section = Section.new(section_params)
+    @chapter = @section.chapter
 
     respond_to do |format|
       if @section.save
-        chapter = @section.chapter
-        format.html { redirect_to chapter_path(chapter, anchor: html_tag_id(@section)) }
+        format.html { redirect_to chapter_path(@chapter, anchor: html_tag_id(@section)) }
         format.json { render :show, status: :created, location: @section }
       else
         format.html { render :new }
