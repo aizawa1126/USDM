@@ -43,7 +43,7 @@
     <td class="test_design <%= checked %>"></td>
     <% spec_num = @chapter.prefix + "-" + requirement.number.to_s + "-" + spec.number.to_s %>
     <td id=<%= html_tag_id(spec) %>><%= link_to spec_num, edit_spec_path(spec) %></td>
-    <td class="description"><%= markdown(spec.content) %></td>
+    <td class="description"><%= markdown(spec.content) %><%= image_tag(spec.picture_url) if spec.picture.present? %></td>
     <td></td>
   </tr>
         <% end %>
