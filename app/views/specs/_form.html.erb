@@ -22,6 +22,21 @@
   </div>
 
   <div class="field">
+    <%= form.label :picture, '画像' %>
+    <%= form.file_field :picture, id: :spec_picture %>
+  </div>
+
+  <div>
+    <% if spec.picture.present? %>
+    <p>登録されている画像</p>
+      <%= image_tag(spec.picture_url) %>
+    <p>URL: <%= spec.picture_url %></p>
+    <% else %>
+    <p>画像は登録されていません</p>
+    <% end %>
+  </div>
+
+  <div class="field">
     <%= form.label :customer_review, '顧客チェック' %>
     <%= form.check_box :customer_review %>
   </div>

@@ -52,6 +52,10 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    carrierwave (1.2.1)
+      activemodel (>= 4.0.0)
+      activesupport (>= 4.0.0)
+      mime-types (>= 1.16)
     childprocess (0.7.0)
       ffi (~> 1.0, >= 1.0.11)
     coderay (1.1.2)
@@ -127,6 +131,7 @@ GEM
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     redcarpet (2.3.0)
+    rmagick (2.16.0)
     ruby_dep (1.5.0)
     rubyzip (1.2.1)
     sass (3.4.24)
@@ -182,6 +187,7 @@ DEPENDENCIES
   bcrypt
   byebug
   capybara (~> 2.13)
+  carrierwave
   coderay
   coffee-rails (~> 4.2)
   jbuilder (~> 2.5)
@@ -190,6 +196,7 @@ DEPENDENCIES
   rails (~> 5.1.1)
   rails-controller-testing
   redcarpet (~> 2.3.0)
+  rmagick
   sass-rails (~> 5.0)
   selenium-webdriver
   spring

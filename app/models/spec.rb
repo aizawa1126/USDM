@@ -8,4 +8,6 @@ class Spec < ApplicationRecord
                greater_than: 0
              },
              uniqueness: {:scope => :function_id}
+
+  mount_uploader :picture, PictureUploader
 end
