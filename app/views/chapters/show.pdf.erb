@@ -57,7 +57,7 @@
     <td class="test_design <%= checked %>"></td>
             <% spec_num = @chapter.prefix + "-" + requirement.number.to_s + "-" + spec.number.to_s %>
     <td><%= spec_num %></td>
-    <td class="description"><%= markdown(spec.content) %><%= wicked_pdf_image_tag(spec.picture_url) if spec.picture.present? %></td>
+    <td class="description"><%= markdown(spec.content) %></td>
     <td></td>
   </tr>
           <% end #each do |spec| %>

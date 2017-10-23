@@ -30,7 +30,7 @@
     <% if spec.picture.present? %>
     <p>登録されている画像</p>
       <%= image_tag(spec.picture_url) %>
-    <p>URL: <%= spec.picture_url %></p>
+    <p>URL: <%= request.protocol + request.host_with_port + spec.picture_url %></p>
     <% else %>
     <p>画像は登録されていません</p>
     <% end %>
