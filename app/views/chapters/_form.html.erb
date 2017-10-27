@@ -26,6 +26,13 @@
     <%= form.text_field :prefix, id: :chapter_prefix %>
   </div>
 
+  <div class="field">
+    <%= form.label :format, "フォーマット" %>
+    <% options = !@chapter.new_record? ? {disabled: "disabled"} : {} %>
+    <%= form.radio_button :format, "usdm", options %>USDM
+    <%= form.radio_button :format, "sheet", options %>Sheet
+  </div>
+
   <div class="field" hidden>
     <%= form.label :specification_id %>
     <% specification_id = !params[:specification_id].nil? ? params[:specification_id] : @chapter.specification_id %>

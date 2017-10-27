@@ -27,7 +27,7 @@ class ChaptersController < ApplicationController
   # POST /chapters
   # POST /chapters.json
   def create
-    @chapter = Chapter.new(chapter_params)
+    @chapter = Chapter.new(create_chapter_params)
     @specification = @chapter.specification
 
     respond_to do |format|
@@ -45,7 +45,7 @@ class ChaptersController < ApplicationController
   # PATCH/PUT /chapters/1.json
   def update
     respond_to do |format|
-      if @chapter.update(chapter_params)
+      if @chapter.update(update_chapter_params)
         format.html { redirect_to specification_path(@chapter.specification_id) }
         format.json { render :show, status: :ok, location: @chapter }
       else
@@ -73,7 +73,11 @@ class ChaptersController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def chapter_params
+    def create_chapter_params
+      params.require(:chapter).permit(:number, :name, :prefix, :specification_id, :format)
+    end
+
+    def update_chapter_params
       params.require(:chapter).permit(:number, :name, :prefix, :specification_id)
     end
 end

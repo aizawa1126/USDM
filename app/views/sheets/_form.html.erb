@@ -1,0 +1,28 @@
+<%= form_with(model: sheet, local: true) do |form| %>
+  <% if sheet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(sheet.errors.count, "error") %> prohibited this sheet from being saved:</h2>
+
+      <ul>
+      <% sheet.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_area :content, id: :sheet_content %>
+  </div>
+
+  <div class="field" hidden>
+    <%= form.label :chapter_id %>
+    <% chapter_id = !params[:chapter_id].nil? ? params[:chapter_id] : @sheet.chapter_id %>
+    <%= form.number_field :chapter_id, id: :sheet_chapter_id, value: chapter_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

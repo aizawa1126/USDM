@@ -2,12 +2,19 @@
   <h1><%= @chapter.specification.title %></h1>
   <div id="main-menu">
     <ul>
+      <% if @chapter.format == "usdm" %>
       <li><%= link_to 'カテゴリを追加', new_chapter_section_path(@chapter) %></li>
+      <% elsif @chapter.sheet.nil? %>
+      <li><%= link_to '新規作成', new_chapter_sheet_path(@chapter) %></li>
+      <% else %>
+      <li><%= link_to '編集', edit_sheet_path(@chapter.sheet) %></li>
+      <% end %>
     </ul>
   </div>
 </div>
 
 <div id="contentsArea">
+<% if @chapter.format == "usdm" %>
 <table border="5" rules="all">
   <tr>
     <th class="category">カテゴリ名</th>
@@ -24,4 +31,7 @@
   <%= render 'table', chapter: @chapter %>
   <% end %>
 </table>
+<% elsif !@chapter.sheet.nil? %>
+<%= markdown(@chapter.sheet.content) %>
+<% end %>
 </div>

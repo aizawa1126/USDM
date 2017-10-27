@@ -1,7 +1,7 @@
 class Chapter < ApplicationRecord
   belongs_to :specification
   has_many :sections, dependent: :destroy
-
+  has_one :sheet, dependent: :destroy
   validates :number,
              presence: true,
              numericality: {

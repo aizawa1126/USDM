@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :sheets
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
@@ -17,6 +18,8 @@ Rails.application.routes.draw do
           end
         end
       end
+
+      resources :sheets, only: [:new, :create, :edit, :update, :destroy], shallow: true
     end
     resources :members, only: [:index, :new, :create, :edit, :update, :destroy]
   end
