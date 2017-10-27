@@ -1,5 +1,6 @@
 <div id="header">
-  <h1><%= @chapter.specification.title %></h1>
+  <h1><%= link_to @chapter.specification.title, specification_path(@chapter.specification_id), id: "specification_title" %></h1>
+  <p class="chapter_name">第<%= @chapter.number%>章 <%= @chapter.name %></p>
   <div id="main-menu">
     <ul>
       <% if @chapter.format == "usdm" %>
@@ -32,6 +33,8 @@
   <% end %>
 </table>
 <% elsif !@chapter.sheet.nil? %>
-<%= markdown(@chapter.sheet.content) %>
+<div id="sheet">
+  <%= markdown(@chapter.sheet.content) %>
+</div>
 <% end %>
 </div>
