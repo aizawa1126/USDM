@@ -16,6 +16,23 @@
     <%= form.text_area :content, id: :sheet_content %>
   </div>
 
+  <div class="field">
+    <%= form.label :sheet_picture, '画像' %>
+    <%= form.file_field :sheet_picture, id: :sheet_picture, multiple: true %>
+  </div>
+
+  <div>
+    <% if sheet.sheet_pictures.present? %>
+    <p>登録されている画像</p>
+      <% sheet.sheet_pictures.each do |sheet_picture| %>
+      <%= image_tag(sheet_picture.picture_url) %>
+      <p>URL: <%= request.protocol + request.host_with_port + sheet_picture.picture_url %></p>
+      <% end %>
+    <% else %>
+    <p>画像は登録されていません</p>
+    <% end %>
+  </div>
+
   <div class="field" hidden>
     <%= form.label :chapter_id %>
     <% chapter_id = !params[:chapter_id].nil? ? params[:chapter_id] : @sheet.chapter_id %>

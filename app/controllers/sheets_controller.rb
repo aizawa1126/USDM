@@ -15,31 +15,39 @@ class SheetsController < ApplicationController
   # POST /sheets.json
   def create
     @sheet = Sheet.new(sheet_params)
-    @chapter = @sheet.chapter
-    respond_to do |format|
-      if @sheet.save
-        format.html { redirect_to chapter_path(@chapter) }
-        format.json { render :show, status: :created, location: @sheet }
-      else
-        format.html { render :new }
-        format.json { render json: @sheet.errors, status: :unprocessable_entity }
+    Sheet.transaction do
+      @sheet.save
+      @chapter = @sheet.chapter
+      if params[:sheet][:sheet_picture].present?
+        params[:sheet][:sheet_picture].each do |sheet_picture|
+          @sheet_picture = SheetPicture.new(sheet_id: @sheet.id, picture: sheet_picture)
+          @sheet_picture.save
+        end
       end
     end
+    redirect_to chapter_path(@chapter)
+  rescue
+    @sheet = Sheet.new
+    @chapter = Chapter.find(params[:sheet][:chapter_id])
+    render :new
   end
 
   # PATCH/PUT /sheets/1
   # PATCH/PUT /sheets/1.json
   def update
-    respond_to do |format|
-      if @sheet.update(sheet_params)
-        chapter = @sheet.chapter
-        format.html { redirect_to chapter_path(chapter) }
-        format.json { render :show, status: :ok, location: @sheet }
-      else
-        format.html { render :edit }
-        format.json { render json: @sheet.errors, status: :unprocessable_entity }
+    @chapter = @sheet.chapter
+    Sheet.transaction do
+      @sheet.update(sheet_params)
+      if params[:sheet][:sheet_picture].present?
+        params[:sheet][:sheet_picture].each do |sheet_picture|
+          @sheet_picture = SheetPicture.new(sheet_id: @sheet.id, picture: sheet_picture)
+          @sheet_picture.save
+        end
       end
     end
+    redirect_to chapter_path(@chapter)
+  rescue
+    render :edit
   end
 
   # DELETE /sheets/1
