@@ -1,8 +1,8 @@
 <div id="header">
-  <h1><%= @specification.title %></h1>
+  <h1><%= @project.name %></h1>
   <div id="main-menu">
     <ul>
-      <li><%= link_to 'メンバー登録', new_specification_member_path(params[:specification_id]) %></li>
+      <li><%= link_to 'メンバー登録', new_project_member_path(params[:project_id]) %></li>
     </ul>
   </div>
 </div>

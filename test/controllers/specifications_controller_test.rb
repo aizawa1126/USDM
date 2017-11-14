@@ -3,21 +3,17 @@ require 'test_helper'
 class SpecificationsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @specification = specifications(:one)
-  end
-
-  test "should get index" do
-    get specifications_url
-    assert_response :success
+    @project = projects(:one)
   end
 
   test "should get new" do
-    get new_specification_url
+    get new_project_specification_url(@project)
     assert_response :success
   end
 
   test "should create specification" do
     assert_difference('Specification.count') do
-      post specifications_url, params: { specification: { title: "new specification title", version: 1 } }
+      post project_specifications_url(@project), params: { specification: { title: "new specification title", version: 1, project_id: @project.id } }
     end
 
     assert_redirected_to specification_url(Specification.last)
@@ -38,6 +34,6 @@ class SpecificationsControllerTest < ActionDispatch::IntegrationTest
       delete specification_url(@specification)
     end
 
-    assert_redirected_to specifications_url
+    assert_redirected_to project_url(@project)
   end
 end

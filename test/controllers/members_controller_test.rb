@@ -3,17 +3,17 @@ require 'test_helper'
 class MembersControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = users(:one)
-    @specification = specifications(:one)
+    @project = projects(:one)
     @member = members(:one)
   end
 
   test "should get index" do
-    get specification_members_url(@specification)
+    get project_members_url(@project)
     assert_response :success
   end
 
   test "should get new" do
-    get new_specification_member_url(@specification)
+    get new_project_member_url(@project)
     assert_response :success
   end
 
@@ -27,6 +27,6 @@ class MembersControllerTest < ActionDispatch::IntegrationTest
       delete member_url(@member)
     end
 
-    assert_redirected_to specification_members_url(@specification)
+    assert_redirected_to project_members_url(@project)
   end
 end

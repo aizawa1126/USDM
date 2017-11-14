@@ -53,9 +53,10 @@ class SheetsController < ApplicationController
   # DELETE /sheets/1
   # DELETE /sheets/1.json
   def destroy
+    chapter = @sheet.chapter
     @sheet.destroy
     respond_to do |format|
-      format.html { redirect_to sheets_url, notice: 'Sheet was successfully destroyed.' }
+      format.html { redirect_to chapter, notice: 'Sheet was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

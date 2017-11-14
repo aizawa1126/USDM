@@ -1,8 +1,8 @@
 <div id="header">
-  <h1><%= @specification.title %></h1>
+  <h1><%= @project.name %></h1>
   <div id="main-menu">
     <ul>
-      <li><%= link_to '戻る', specification_members_path(@specification.id) %></li>
+      <li><%= link_to '戻る', project_members_path(@project.id) %></li>
     </ul>
   </div>
 </div>

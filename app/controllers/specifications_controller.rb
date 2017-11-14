@@ -2,12 +2,6 @@ class SpecificationsController < ApplicationController
   before_action :set_specification, only: [:show, :edit, :update, :destroy]
   before_action :has_read_operation, only: [:show]
 
-  # GET /specifications
-  # GET /specifications.json
-  def index
-    @specifications = Specification.all
-  end
-
   # GET /specifications/1
   # GET /specifications/1.json
   def show
@@ -23,6 +17,7 @@ class SpecificationsController < ApplicationController
 
   # GET /specifications/new
   def new
+    @project = Project.find(params[:project_id])
     @specification = Specification.new
   end
 
@@ -63,9 +58,10 @@ class SpecificationsController < ApplicationController
   # DELETE /specifications/1
   # DELETE /specifications/1.json
   def destroy
+    project = @specification.project
     @specification.destroy
     respond_to do |format|
-      format.html { redirect_to specifications_url }
+      format.html { redirect_to project_path(project) }
       format.json { head :no_content }
     end
   end
@@ -78,6 +74,6 @@ class SpecificationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def specification_params
-      params.require(:specification).permit(:title, :version)
+      params.require(:specification).permit(:title, :version, :project_id)
     end
 end

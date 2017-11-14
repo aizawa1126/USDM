@@ -1,0 +1,29 @@
+<div id="header">
+  <h1><%= Constants::PROJECT_NAME %></h1>
+  <div id="main-menu">
+    <ul>
+      <li><%= link_to 'プロジェクトを追加', new_project_path %></li>
+    </ul>
+  </div>
+</div>
+
+<div id="contentsArea">
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th colspan="2">管理</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @projects.each do |project| %>
+        <tr>
+          <td><%= link_to project.name, project %></td>
+          <td><%= link_to 'メンバー', project_members_path(project.id) %></td>
+          <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

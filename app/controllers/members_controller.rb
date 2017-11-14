@@ -5,22 +5,22 @@ class MembersController < ApplicationController
   # GET /members
   # GET /members.json
   def index
-    @members = Member.where(specification_id: params[:specification_id].to_i)
-    @specification = Specification.find(params[:specification_id])
+    @members = Member.where(project_id: params[:project_id].to_i)
+    @project = Project.find(params[:project_id])
   end
 
   # GET /members/new
   def new
     @users = User.all
     @member = Member.new
-    @specification = Specification.find(params[:specification_id])
+    @project = Project.find(params[:project_id])
   end
 
   # POST /members
   # POST /members.json
   def create
     @member = Member.new(member_params)
-    @specification = @member.specification
+    @project = @member.project
 
     Member.transaction do
       @member.save!
@@ -37,21 +37,22 @@ class MembersController < ApplicationController
 
       raise if no_role
     end
-    redirect_to specification_members_path(@specification.id)
+    redirect_to project_members_path(@project.id)
   rescue
     @users = User.all
     @member = Member.new
-    @specification = Specification.find(params[:specification_id])
+    @project = Project.find(params[:project_id])
     render :new
   end
 
   def edit
     @member = Member.find(params[:id])
-    @specification = @member.specification
+    @project = @member.project
   end
 
   def update
-    @specification = @member.specification
+    @project = @member.project
+
     MemberRole.transaction do
       params[:member_roles].each do |role_name, value|
         role_id = set_role_id(role_name)
@@ -64,7 +65,7 @@ class MembersController < ApplicationController
         end
       end
     end
-    redirect_to specification_members_path(@specification.id)
+    redirect_to project_members_path(@project.id)
   rescue
     render :edit
   end
@@ -73,10 +74,10 @@ class MembersController < ApplicationController
   # DELETE /members/1
   # DELETE /members/1.json
   def destroy
-    @specification = @member.specification
+    @project = @member.project
     @member.destroy
     respond_to do |format|
-      format.html { redirect_to specification_members_path(@specification.id) }
+      format.html { redirect_to project_members_path(@project.id) }
       format.json { head :no_content }
     end
   end
@@ -93,6 +94,6 @@ class MembersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def member_params
-      params.require(:member).permit(:user_id, :specification_id)
+      params.require(:member).permit(:user_id, :project_id)
     end
 end

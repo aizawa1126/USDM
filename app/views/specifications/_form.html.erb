@@ -1,4 +1,4 @@
-<%= form_with(model: specification, local: true) do |form| %>
+<%= form_with(model: specification, url: params[:project_id].nil? ? specification_path : project_specifications_path, local: true) do |form| %>
   <% if specification.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(specification.errors.count, "error") %> prohibited this specification from being saved:</h2>
@@ -19,6 +19,12 @@
   <div class="field">
     <%= form.label :version, "版" %>
     <%= form.text_field :version, id: :specification_version %>
+  </div>
+
+  <div class="field" hidden>
+    <%= form.label :project_id %>
+    <% project_id = !params[:project_id].nil? ? params[:project_id] : @specification.project_id %>
+    <%= form.number_field :project_id, id: :specification_project_id, value: project_id %>
   </div>
 
   <div class="actions">

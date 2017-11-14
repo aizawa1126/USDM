@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_many :members
-  has_many :specifications, through: :members
+  has_many :projects, through: :members
 
   before_save { self.email = email.downcase }
   validates :name, presence: true, length: { maximum: 50 }

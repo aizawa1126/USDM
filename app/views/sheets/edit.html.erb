@@ -2,6 +2,7 @@
   <h1><%= @sheet.chapter.specification.title %></h1>
   <div id="main-menu">
     <ul>
+      <li><%= link_to 'シートを削除', @sheet, method: :delete, data: { confirm: 'Are you sure?' } %></li>
       <li><%= link_to '戻る', @sheet.chapter %></li>
     </ul>
   </div>

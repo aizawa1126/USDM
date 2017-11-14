@@ -1,0 +1,12 @@
+<div id="header">
+  <h1><%= Constants::PROJECT_NAME %></h1>
+  <div id="main-menu">
+    <ul>
+      <li><%= link_to 'Back', projects_path %></li>
+    </ul>
+  </div>
+</div>
+
+<div id="contentsArea">
+<%= render 'form', project: @project %>
+</div>

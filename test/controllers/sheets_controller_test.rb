@@ -13,7 +13,7 @@ class SheetsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create sheet" do
     assert_difference('Sheet.count') do
-      post sheets_url, params: { sheet: { chapter_id: @sheet.chapter_id, content: @sheet.content } }
+      post chapter_sheets_url(@chapter), params: { sheet: { chapter_id: @sheet.chapter_id, content: @sheet.content } }
     end
 
     assert_redirected_to chapter_url(@chapter)
@@ -34,6 +34,6 @@ class SheetsControllerTest < ActionDispatch::IntegrationTest
       delete sheet_url(@sheet)
     end
 
-    assert_redirected_to sheets_url
+    assert_redirected_to chapter_url(@chapter)
   end
 end

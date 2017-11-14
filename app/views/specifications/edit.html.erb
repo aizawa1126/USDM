@@ -3,6 +3,7 @@
   <div id="main-menu">
     <ul>
       <li><%= link_to '表紙に戻る', @specification %></li>
+      <li><%= link_to '仕様書を削除', @specification, method: :delete, data: { confirm: 'Are you sure?' } %></li>
     </ul>
   </div>
 </div>

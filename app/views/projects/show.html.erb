@@ -1,0 +1,27 @@
+<div id="header">
+  <h1><%= @project.name %></h1>
+  <div id="main-menu">
+    <ul>
+      <li><%= link_to '編集', edit_project_path(@project) %></li>
+      <li><%= link_to '仕様書を追加', new_project_specification_path(@project) %></li>
+    </ul>
+  </div>
+</div>
+
+<div id="contentsArea">
+<table>
+  <tbody>
+<% @project.specifications.order("title").each do |specification| %>
+  <tr>
+    <td>
+  <%= link_to specification.title, specification_path(specification.id) %>
+    </td>
+    <td>
+    <%= link_to '編集', edit_specification_path(specification) %>
+    </td>
+
+<% end %>
+  </tbody>
+</table>
+
+</div>
