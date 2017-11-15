@@ -1,7 +1,8 @@
 <div id="header">
-  <h1><%= @specification.title %></h1>
+  <h1><%= specification_title_link_tag %></h1>
   <div id="main-menu">
     <ul>
+      <li><%= link_to 'プロジェクト', @specification.project %></li>
       <li><%= link_to '章を追加', new_specification_chapter_path(@specification) %></li>
       <li><%= link_to '表紙を編集', edit_specification_path(@specification) %></li>
     </ul>

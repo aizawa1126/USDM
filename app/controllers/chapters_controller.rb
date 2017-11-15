@@ -4,6 +4,7 @@ class ChaptersController < ApplicationController
   # GET /chapters/1
   # GET /chapters/1.json
   def show
+    @specification = @chapter.specification
     respond_to do |format|
       format.html
       format.pdf do
@@ -22,6 +23,7 @@ class ChaptersController < ApplicationController
 
   # GET /chapters/1/edit
   def edit
+    @specification = @chapter.specification
   end
 
   # POST /chapters

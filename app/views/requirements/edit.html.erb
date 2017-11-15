@@ -1,9 +1,9 @@
 <div id="header">
-  <h1><%= @requirement.section.chapter.specification.title %></h1>
+  <h1><%= specification_title_link_tag %></h1>
+  <p class="chapter_name"><%= chapter_name_link_tag %></p>
   <div id="main-menu">
     <ul>
       <li><%= link_to '要求を削除', @requirement, method: :delete, data: { confirm: 'Are you sure?' } %></li>
-      <li><%= link_to '戻る', @requirement.section.chapter %></li>
     </ul>
   </div>
 </div>

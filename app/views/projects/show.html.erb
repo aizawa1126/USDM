@@ -1,9 +1,10 @@
 <div id="header">
-  <h1><%= @project.name %></h1>
+  <h1><%= project_name_link_tag %></h1>
   <div id="main-menu">
     <ul>
-      <li><%= link_to '編集', edit_project_path(@project) %></li>
+      <li><%= link_to 'プロジェクト編集', edit_project_path(@project) %></li>
       <li><%= link_to '仕様書を追加', new_project_specification_path(@project) %></li>
+      <li><%= link_to 'メンバー管理', project_members_path(@project.id) %></li>
     </ul>
   </div>
 </div>
@@ -11,16 +12,12 @@
 <div id="contentsArea">
 <table>
   <tbody>
-<% @project.specifications.order("title").each do |specification| %>
+  <% @project.specifications.order("title").each do |specification| %>
   <tr>
     <td>
-  <%= link_to specification.title, specification_path(specification.id) %>
+      <%= link_to specification.title, specification_path(specification.id) %>
     </td>
-    <td>
-    <%= link_to '編集', edit_specification_path(specification) %>
-    </td>
-
-<% end %>
+  <% end %>
   </tbody>
 </table>
 

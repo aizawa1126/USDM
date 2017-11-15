@@ -5,10 +5,13 @@ class SheetsController < ApplicationController
   def new
     @sheet = Sheet.new
     @chapter = Chapter.find(params[:chapter_id])
+    @specification = @chapter.specification
   end
 
   # GET /sheets/1/edit
   def edit
+    @chapter = @sheet.chapter
+    @specification = @chapter.specification
   end
 
   # POST /sheets

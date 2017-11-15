@@ -1,5 +1,5 @@
 <div id="header">
-  <h1><%= @project.name %></h1>
+  <h1><%= project_name_link_tag %></h1>
   <div id="main-menu">
     <ul>
       <li><%= link_to 'メンバー登録', new_project_member_path(params[:project_id]) %></li>

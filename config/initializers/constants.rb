@@ -1,3 +1,3 @@
 module Constants
-  PROJECT_NAME = "My Project"
+  APPLICATION_TITLE = "My Projects"
 end

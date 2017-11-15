@@ -1,9 +1,8 @@
 <div id="header">
-  <h1><%= Constants::PROJECT_NAME %></h1>
+  <h1><%= application_title_link_tag %></h1>
   <div id="main-menu">
     <ul>
-      <li><%= link_to '編集', edit_user_path(@user) %></li>
-      <li><%= link_to '戻る', users_path %></li>
+      <li><%= link_to 'ユーザー編集', edit_user_path(@user) %></li>
     </ul>
   </div>
 </div>

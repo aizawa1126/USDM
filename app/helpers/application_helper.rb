@@ -2,6 +2,22 @@ module ApplicationHelper
   require "redcarpet"
   require "coderay"
 
+  def application_title_link_tag
+    link_to Constants::APPLICATION_TITLE, root_path, id: "application_title"
+  end
+
+  def project_name_link_tag
+    link_to @project.name, @project, id: "project_name"
+  end
+
+  def specification_title_link_tag
+    link_to @specification.title, @specification, id: "specification_title"
+  end
+
+  def chapter_name_link_tag
+    link_to "第"+ @chapter.number.to_s+"章 " + @chapter.name, @chapter
+  end
+
   def has_operation? operation, specification
     return false if current_user.nil?
     member = find_member(specification)

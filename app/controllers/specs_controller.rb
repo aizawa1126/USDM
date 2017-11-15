@@ -5,10 +5,13 @@ class SpecsController < ApplicationController
   def new
     @spec = Spec.new
     @chapter = Function.find(params[:function_id]).requirement.section.chapter
+    @specification = @chapter.specification
   end
 
   # GET /specs/1/edit
   def edit
+    @chapter = @spec.function.requirement.section.chapter
+    @specification = @chapter.specification
   end
 
   # POST /specs

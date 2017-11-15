@@ -5,10 +5,13 @@ class SectionsController < ApplicationController
   def new
     @section = Section.new
     @chapter = Chapter.find(params[:chapter_id])
+    @specification = @chapter.specification
   end
 
   # GET /sections/1/edit
   def edit
+    @chapter = @section.chapter
+    @specification = @chapter.specification
   end
 
   # POST /sections

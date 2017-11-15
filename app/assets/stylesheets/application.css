@@ -79,7 +79,10 @@ li {
   padding: 0.7em 1em 1em 1em;
 }
 
-h1, h1 #specification_title {
+h1,
+h1 #application_title,
+h1 #project_name,
+h1 #specification_title {
   padding: 2px 10px 1px 0px;
   margin: 0 0 10px 0;
   font-size: 22px;
@@ -104,7 +107,9 @@ h1, h1 #specification_title {
 #header ul li a {
   padding: 4px 10px 4px 10px;
 }
-
+#header .chapter_name a{
+  color: #fff;
+}
 
 #main-menu a {
   color: #fff;
@@ -154,4 +159,30 @@ td.description a:hover {
   background-color: #fff;
   text-decoration: underline;
 }
+#contentsArea h2 {
+  font-size: 20px;
+}
 
+#projects-index a {
+  font-family: "Trebuchet MS", Verdana, sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  margin: 0 0 10px 0; 
+  color: #169;
+  text-decoration: none;
+}
+#projects-index a:hover {
+  color: #c61a1a;
+  text-decoration: underline;
+  background-color: #fff;
+  font-family: "Trebuchet MS", Verdana, sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  margin: 0 0 10px 0;
+}
+#projects-index ul {
+  padding-left: 0;
+}
+#projects-index li {
+  line-height: 4em;
+}
