@@ -23,11 +23,6 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to project_url(Project.last)
   end
 
-  test "should show project" do
-    get project_url(@project)
-    assert_response :success
-  end
-
   test "should get edit" do
     get edit_project_url(@project)
     assert_response :success

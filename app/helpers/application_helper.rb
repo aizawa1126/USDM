@@ -18,9 +18,9 @@ module ApplicationHelper
     link_to "第"+ @chapter.number.to_s+"章 " + @chapter.name, @chapter
   end
 
-  def has_operation? operation, specification
+  def has_operation? operation, project
     return false if current_user.nil?
-    member = find_member(specification)
+    member = find_member(project)
     return false if member.nil?
 
     operation_is_found = false
@@ -53,9 +53,9 @@ module ApplicationHelper
   end
 
   private
-    def find_member specification
+    def find_member project
       return false if current_user.nil?
-      current_user.members.find_by(specification_id: specification.id)
+      current_user.members.find_by(project_id: project.id)
     end
 
 end

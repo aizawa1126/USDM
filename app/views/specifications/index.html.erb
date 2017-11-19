@@ -22,7 +22,7 @@
 
   <tbody>
     <% @specifications.each do |specification| %>
-      <% if admin? || has_operation?("read", specification) %>
+      <% if admin? || has_operation?("read", specification.project) %>
       <tr>
         <td><%= link_to specification.title, specification %></td>
         <td><%= specification.version %></td>

@@ -10,6 +10,6 @@ class ApplicationController < ActionController::Base
   end
 
   def has_read_operation
-    redirect_to(root_url) if !logged_in? || (!current_user.admin? && !has_operation?("read", @specification))
+    redirect_to(root_url) if !logged_in? || (!current_user.admin? && !has_operation?("read", @project))
   end
 end

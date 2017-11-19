@@ -12,7 +12,9 @@
   <div id="projects-index">
     <ul>
     <% @projects.each do |project| %>
+      <% if admin? || has_operation?("read", project) %>
       <li><%= link_to project.name, project %></li>
+      <% end %>
     <% end %>
     </ul>
   </div>
