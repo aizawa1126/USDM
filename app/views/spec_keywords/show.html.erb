@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Spec:</strong>
+  <%= @spec_keyword.spec_id %>
+</p>
+
+<p>
+  <strong>Keyword:</strong>
+  <%= @spec_keyword.keyword_id %>
+</p>
+
+<%= link_to 'Edit', edit_spec_keyword_path(@spec_keyword) %> |
+<%= link_to 'Back', spec_keywords_path %>

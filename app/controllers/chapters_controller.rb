@@ -5,6 +5,7 @@ class ChaptersController < ApplicationController
   # GET /chapters/1.json
   def show
     @specification = @chapter.specification
+    @keywords = Keyword.where(project_id: @specification.project_id)
     respond_to do |format|
       format.html
       format.pdf do

@@ -1,0 +1,27 @@
+<%= form_with(model: spec_keyword, local: true) do |form| %>
+  <% if spec_keyword.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(spec_keyword.errors.count, "error") %> prohibited this spec_keyword from being saved:</h2>
+
+      <ul>
+      <% spec_keyword.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :spec_id %>
+    <%= form.number_field :spec_id, id: :spec_keyword_spec_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :keyword_id %>
+    <%= form.number_field :keyword_id, id: :spec_keyword_keyword_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

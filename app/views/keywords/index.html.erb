@@ -1,0 +1,29 @@
+<div id="header">
+  <h1><%= project_name_link_tag %></h1>
+  <div id="main-menu">
+    <ul>
+      <li><%= link_to 'キーワード登録', new_project_keyword_path(@project) %>
+    </ul>
+  </div>
+</div>
+
+<div id="contentsArea">
+<table>
+  <thead>
+    <tr>
+      <th>名前</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @keywords.each do |keyword| %>
+      <tr>
+        <td><%= keyword.name %></td>
+        <td><%= link_to '編集', edit_keyword_path(keyword) %></td>
+        <td><%= link_to '削除', keyword, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>

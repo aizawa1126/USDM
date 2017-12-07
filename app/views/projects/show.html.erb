@@ -4,7 +4,8 @@
     <ul>
       <li><%= link_to 'プロジェクト編集', edit_project_path(@project) %></li>
       <li><%= link_to '仕様書を追加', new_project_specification_path(@project) %></li>
-      <li><%= link_to 'メンバー管理', project_members_path(@project.id) %></li>
+      <li><%= link_to 'メンバー管理', project_members_path(@project) %></li>
+      <li><%= link_to 'キーワード一覧', project_keywords_path(@project) %></li>
     </ul>
   </div>
 </div>

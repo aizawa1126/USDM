@@ -44,10 +44,23 @@
     content: "□"
   }
 
+  .spec {
+    .check_specification,
+    .design_review,
+    .test_design {
+      width: 1em;
+    }
+  }
+
   .note {
    width: 6em; 
   }
 
   .chapter_name {
     font-size: 12px;
+  }
+
+  .keywords ul {
+    padding-left: 0;
+    margin-top: 0;
   }

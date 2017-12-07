@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171114135347) do
+ActiveRecord::Schema.define(version: 20171119123255) do
 
   create_table "chapters", force: :cascade do |t|
     t.integer "number"
@@ -25,6 +25,13 @@ ActiveRecord::Schema.define(version: 20171114135347) do
   create_table "functions", force: :cascade do |t|
     t.string "name"
     t.integer "requirement_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "keywords", force: :cascade do |t|
+    t.string "name"
+    t.integer "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -96,6 +103,13 @@ ActiveRecord::Schema.define(version: 20171114135347) do
   create_table "sheets", force: :cascade do |t|
     t.text "content"
     t.integer "chapter_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "spec_keywords", force: :cascade do |t|
+    t.integer "spec_id"
+    t.integer "keyword_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

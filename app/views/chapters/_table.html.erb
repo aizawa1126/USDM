@@ -44,7 +44,24 @@
     <% spec_num = @chapter.prefix + "-" + requirement.number.to_s + "-" + spec.number.to_s %>
     <td id=<%= html_tag_id(spec) %>><%= link_to spec_num, edit_spec_path(spec) %></td>
     <td class="description"><%= markdown(spec.content) %></td>
-    <td></td>
+    <td class="keywords">
+      <ul>
+        <% spec.spec_keywords.each do |spec_keyword| %>
+        <li><%= spec_keyword.keyword.name %></li>
+        <% end %>
+      </ul>
+      <%= form_with(model: SpecKeyword.new, url: spec_keywords_path) do |form| %>
+        <% keyword_selector = [] %>
+        <% @keywords.each do |keyword| %>
+          <% keyword_selector.push([keyword.name, keyword.id]) %>
+        <% end %>
+        <%= form.select :keyword_id, keyword_selector %>
+        <div class="field" hidden>
+          <%= form.number_field :spec_id, value: spec.id %>
+        </div>
+        <%= form.submit %>
+      <% end %>
+    </td>
   </tr>
         <% end %>
   <tr>

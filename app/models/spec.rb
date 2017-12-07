@@ -1,5 +1,7 @@
 class Spec < ApplicationRecord
   belongs_to :function
+  has_many :spec_keywords, dependent: :destroy
+  has_many :keywords, through: :spec_keywords
 
   validates :number,
              presence: true,

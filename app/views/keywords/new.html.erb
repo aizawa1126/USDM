@@ -1,0 +1,12 @@
+<div id="header">
+  <h1><%= project_name_link_tag %></h1>
+  <div id="main-menu">
+    <ul>
+      <li><%= link_to 'キーワード一覧', project_keywords_path(@project) %></li>
+    </ul>
+  </div>
+</div>
+
+<div id="contentsArea">
+<%= render 'form', keyword: @keyword %>
+</div>

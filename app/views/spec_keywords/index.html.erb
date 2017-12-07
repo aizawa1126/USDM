@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Spec Keywords</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Spec</th>
+      <th>Keyword</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @spec_keywords.each do |spec_keyword| %>
+      <tr>
+        <td><%= spec_keyword.spec_id %></td>
+        <td><%= spec_keyword.keyword_id %></td>
+        <td><%= link_to 'Show', spec_keyword %></td>
+        <td><%= link_to 'Edit', edit_spec_keyword_path(spec_keyword) %></td>
+        <td><%= link_to 'Destroy', spec_keyword, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Spec Keyword', new_spec_keyword_path %>
