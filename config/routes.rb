@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :spec_keywords
+  resources :spec_keywords, only: [:index, :create, :destroy]
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'

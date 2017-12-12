@@ -50,7 +50,27 @@
     <%= form.label :test_review, 'テスト設計' %>
     <%= form.check_box :test_review %>
   </div>
-
+  <% unless @spec.spec_keywords.blank? %>
+  <div class="keywords">
+    <p>keywords</p>
+    <table>
+      <thead>
+        <tr>
+          <th>名前</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @spec.spec_keywords.each do |spec_keyword| %>
+        <tr>
+          <td><%= spec_keyword.keyword.name %></td>
+          <td><%= link_to '削除', spec_keyword_path(spec_keyword), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+  <% end %>
   <div class="field" hidden>
     <%= form.label :function_id %>
     <% function_id = !params[:function_id].nil? ? params[:function_id] : @spec.function_id %>

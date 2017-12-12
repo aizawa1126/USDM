@@ -7,20 +7,6 @@ class SpecKeywordsController < ApplicationController
     @spec_keywords = SpecKeyword.all
   end
 
-  # GET /spec_keywords/1
-  # GET /spec_keywords/1.json
-  def show
-  end
-
-  # GET /spec_keywords/new
-  def new
-    @spec_keyword = SpecKeyword.new
-  end
-
-  # GET /spec_keywords/1/edit
-  def edit
-  end
-
   # POST /spec_keywords
   # POST /spec_keywords.json
   def create
@@ -38,26 +24,13 @@ class SpecKeywordsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /spec_keywords/1
-  # PATCH/PUT /spec_keywords/1.json
-  def update
-    respond_to do |format|
-      if @spec_keyword.update(spec_keyword_params)
-        format.html { redirect_to @spec_keyword, notice: 'Spec keyword was successfully updated.' }
-        format.json { render :show, status: :ok, location: @spec_keyword }
-      else
-        format.html { render :edit }
-        format.json { render json: @spec_keyword.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
   # DELETE /spec_keywords/1
   # DELETE /spec_keywords/1.json
   def destroy
+    @spec = @spec_keyword.spec
     @spec_keyword.destroy
     respond_to do |format|
-      format.html { redirect_to spec_keywords_url, notice: 'Spec keyword was successfully destroyed.' }
+      format.html { redirect_to edit_spec_url(@spec) }
       format.json { head :no_content }
     end
   end

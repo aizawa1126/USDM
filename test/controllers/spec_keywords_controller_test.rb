@@ -16,32 +16,12 @@ class SpecKeywordsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get new" do
-    get new_spec_keyword_url
-    assert_response :success
-  end
-
   test "should create spec_keyword" do
     assert_difference('SpecKeyword.count') do
-      post spec_keywords_url, params: { spec_keyword: { keyword_id: @spec_keyword.keyword_id, spec_id: @spec_keyword.spec_id } }
+      post spec_keywords_url, params: { spec_keyword: { keyword_id: 2, spec_id: @spec_keyword.spec_id } }
     end
 
     assert_redirected_to chapter_url(@chapter)
-  end
-
-  test "should show spec_keyword" do
-    get spec_keyword_url(@spec_keyword)
-    assert_response :success
-  end
-
-  test "should get edit" do
-    get edit_spec_keyword_url(@spec_keyword)
-    assert_response :success
-  end
-
-  test "should update spec_keyword" do
-    patch spec_keyword_url(@spec_keyword), params: { spec_keyword: { keyword_id: @spec_keyword.keyword_id, spec_id: @spec_keyword.spec_id } }
-    assert_redirected_to spec_keyword_url(@spec_keyword)
   end
 
   test "should destroy spec_keyword" do
@@ -49,6 +29,6 @@ class SpecKeywordsControllerTest < ActionDispatch::IntegrationTest
       delete spec_keyword_url(@spec_keyword)
     end
 
-    assert_redirected_to spec_keywords_url
+    assert_redirected_to edit_spec_url(@spec)
   end
 end
