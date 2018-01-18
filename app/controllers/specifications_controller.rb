@@ -1,5 +1,5 @@
 class SpecificationsController < ApplicationController
-  before_action :set_specification, only: [:show, :edit, :update, :destroy]
+  before_action :set_specification, only: [:show, :edit, :update, :destroy, :search]
   before_action :has_read_operation, only: [:show]
 
   # GET /specifications/1
@@ -64,6 +64,10 @@ class SpecificationsController < ApplicationController
       format.html { redirect_to project_path(project) }
       format.json { head :no_content }
     end
+  end
+
+  def search
+    @specs = Spec.search(params[:id].to_i, params[:search])
   end
 
   private

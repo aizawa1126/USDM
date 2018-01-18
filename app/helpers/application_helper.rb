@@ -18,6 +18,10 @@ module ApplicationHelper
     link_to "第"+ @chapter.number.to_s+"章 " + @chapter.name, @chapter
   end
 
+  def spec_number spec
+    spec.function.requirement.section.chapter.prefix + "-" + spec.function.requirement.number.to_s + "-" + spec.number.to_s
+  end
+
   def has_operation? operation, project
     return false if current_user.nil?
     member = find_member(project)

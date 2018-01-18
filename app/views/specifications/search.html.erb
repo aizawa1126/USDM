@@ -1,0 +1,34 @@
+<div id="header">
+  <div id="quick-search">
+    <%= form_tag search_specification_url(@specification), :method => 'get' do %>
+      <p>
+        <%= text_field_tag :search %>
+        <%= submit_tag "検索" %>
+      </p>
+    <% end %>
+  </div>
+  <h1><%= specification_title_link_tag %></h1>
+  <div id="main-menu">
+    <ul>
+      <li><%= link_to 'キーワード一覧', project_keywords_path(@project) %></li>
+    </ul>
+  </div>
+</div>
+
+<div id="contentsArea">
+  <h3>結果 (<%= @specs.count %>)</h3>
+  <table>
+    <tbody>
+    <% @specs.each do |spec| %>
+      <% chapter_id = spec.function.requirement.section.chapter.id %>
+      <tr>
+        <td>
+      <%= link_to spec_number(spec), chapter_path(chapter_id, anchor: "spec_"+spec.id.to_s) %>
+        </td>
+        <td>
+      <%= spec.content %>
+        </td>
+      </tr>
+    <% end %>
+</div>
+

@@ -1,4 +1,12 @@
 <div id="header">
+  <div id="quick-search">
+    <%= form_tag search_specification_url(@specification), :method => 'get' do %>
+      <p>
+        <%= text_field_tag :search %>
+        <%= submit_tag "検索" %>
+      </p>
+    <% end %>
+  </div>
   <h1><%= specification_title_link_tag %></h1>
   <div id="main-menu">
     <ul>

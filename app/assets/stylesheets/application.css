@@ -116,6 +116,11 @@ h1 #specification_title {
   font-size: 12px;
 }
 
+#quick-search {
+  float: right;
+  padding-right: 1em;
+}
+
 tr.spec td.description {
   line-height: 0.3em;
   padding-top:0.3em;

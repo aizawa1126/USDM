@@ -12,4 +12,13 @@ class Spec < ApplicationRecord
              uniqueness: {:scope => :function_id}
 
   mount_uploader :picture, PictureUploader
+
+  def self.search(specification_id, search)
+    if search
+      joins({:function => {:requirement => {:section => {:chapter => :specification}}}})
+     .where(['specifications.id == ? and specs.content LIKE ?', specification_id, "%#{search}%"])
+    else
+      all
+    end
+  end
 end

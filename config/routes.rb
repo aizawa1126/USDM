@@ -22,6 +22,9 @@ Rails.application.routes.draw do
 
         resources :sheets, only: [:new, :create, :edit, :update, :destroy], shallow: true
       end
+      member do
+        get :search
+      end
     end
     resources :members, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :keywords, only: [:index, :new, :create, :edit, :update, :destroy]
