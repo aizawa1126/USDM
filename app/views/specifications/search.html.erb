@@ -16,7 +16,7 @@
 </div>
 
 <div id="contentsArea">
-  <h3>結果 (<%= @specs.count %>)</h3>
+  <h3>結果 (<%= @specs.count + @sheets.count %>)</h3>
   <table>
     <tbody>
     <% @specs.each do |spec| %>
@@ -30,5 +30,13 @@
         </td>
       </tr>
     <% end %>
+    <% @sheets.each do |sheet| %>
+      <tr>
+        <td>
+          <%= link_to sheet.chapter.name, chapter_path(sheet.chapter.id) %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
 </div>
-

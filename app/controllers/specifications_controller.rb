@@ -68,6 +68,7 @@ class SpecificationsController < ApplicationController
 
   def search
     @specs = Spec.search(params[:id].to_i, params[:search])
+    @sheets = Sheet.search(params[:id].to_i, params[:search])
   end
 
   private
