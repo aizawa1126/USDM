@@ -21,7 +21,7 @@
       <% section.requirements.order("number").each do |requirement| %>
   <tr>
         <% if isFirstRequirement %>
-    <td rowspan="<%= rowspan_pdf(section.id) %>" class="category">
+    <td rowspan="<%= rowspan_pdf(section) %>" class="category">
           <%= @chapter.number%>.<%= section.number%><br/>
           <%= section.name %>
     </td>

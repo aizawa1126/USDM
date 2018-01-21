@@ -1,3 +1,4 @@
+<div class="page-break">
 <p class="document_name">
   <%= @specification.title %>
 </p>
@@ -17,18 +18,92 @@
 <% @specification.chapters.order("number").each do |chapter| %>
   <tr>
     <td>
-  <%= "第"+chapter.number.to_s+"章"  %>
-  <%= link_to chapter.name, chapter_path(chapter.id) %>
+      <span class="chapter_number"><%= "第"+chapter.number.to_s+"章" %></spec>
+      <spec class="chapter_name"><%= chapter.name %></spec>
     </td>
-    <td>
-    <%= link_to 'Edit', edit_chapter_path(chapter) %>
-    </td>
-
 <% end %>
   </tbody>
 </table>
+</div>
 
-<%= link_to '章を追加', new_chapter_path(specification_id: @specification.id) %>
+<% @specification.chapters.order("number").each do |chapter| %>
+<div class="page-break">
+<%= chapter.number %>
+<%= chapter.name %>
+  <% if chapter.format == "usdm"%>
+<table border="5" rules="all">
+  <tr>
+    <th class="category">カテゴリ名</th>
+    <th class="requirement" colspan="3">要求</th>
+    <th class="spec_number">要求番号</th>
+    <th class="description" >説明</th>
+    <th class="note" >備考</th>
+  </tr>
 
-<%= link_to '表紙を編集', edit_specification_path(@specification) %> |
-<%= link_to 'トップへ戻る', specifications_path %>
+  <% chapter.sections.order("number").each do |section| %>
+    <% isFirstRequirement = true %>
+    <% if !hasRequirements?(section) %>
+  <tr>
+    <td rowspan="1" class="category">
+      <%= chapter.number%>.<%= section.number%><br/>
+      <%= section.name %>
+    </td>
+    <td colspan="6"></td>
+  </tr>
+    <% else #if !hasRequirements?(section) %>
+      <% section.requirements.order("number").each do |requirement| %>
+  <tr>
+        <% if isFirstRequirement %>
+    <td rowspan="<%= rowspan_pdf(section) %>" class="category">
+          <%= chapter.number%>.<%= section.number%><br/>
+          <%= section.name %>
+    </td>
+        <% end #if isFirstRequirement %>
+        <% isFirstRequirement = false %>
+    <td colspan="3" rowspan="3" class="requirement_summary">要求</td>
+        <% req_num = chapter.prefix + "-" + requirement.number.to_s%>
+    <td class="requirement_summary"><%= req_num %></td>
+    <td class="requirement_summary description"><%= requirement.content %></td>
+    <td class="requirement_summary"></td>
+  </tr>
+  <tr>
+    <td>理由</td>
+    <td class="description"><%= requirement.reason %></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>説明</td>
+    <td class="description"><%= requirement.description %></td>
+    <td></td>
+  </tr>
+        <% requirement.functions.each do |function| %>
+  <tr>
+    <td colspan="6" class="function"><%= "<"+function.name+">" %></td>
+  </tr>
+          <% function.specs.each do |spec| %>
+  <tr class="spec">
+            <% checked = spec.customer_review ? "checked" : "unchecked"%>
+    <td class="check_specification <%= checked %>"></td>
+            <% checked = spec.design_review ? "checked" : "unchecked"%>
+    <td class="design_review <%= checked %>"></td>
+            <% checked = spec.test_review ? "checked" : "unchecked"%>
+    <td class="test_design <%= checked %>"></td>
+            <% spec_num = chapter.prefix + "-" + requirement.number.to_s + "-" + spec.number.to_s %>
+    <td><%= spec_num %></td>
+    <td class="description"><%= markdown(spec.content) %></td>
+    <td></td>
+  </tr>
+          <% end #each do |spec| %>
+        <% end #each do |function| %>
+      <% end #each do |requirement| %>
+    <% end #if !hasRequirements?(section) %>
+  <% end #each do |section| %>
+</table>
+
+  <% else %>
+<div id="sheet">
+  <%= markdown(chapter.sheet.content) %>
+</div>
+  <% end %>
+</div>
+<% end %>
