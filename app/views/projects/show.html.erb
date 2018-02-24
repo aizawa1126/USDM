@@ -17,6 +17,7 @@
   <tr>
     <td>
       <%= link_to specification.title, specification_path(specification.id) %>
+      <%= "(第"+specification.version.to_s+"版)" %>
     </td>
   <% end %>
   </tbody>

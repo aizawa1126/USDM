@@ -7,7 +7,11 @@ module ApplicationHelper
   end
 
   def project_name_link_tag
-    link_to @project.name, @project, id: "project_name"
+    if @project
+      link_to @project.name, @project, id: "project_name"
+    else
+      link_to @specification.project.name, @project, id: "project_name"
+    end
   end
 
   def specification_title_link_tag

@@ -25,6 +25,7 @@
     <% if sheet.sheet_pictures.present? %>
     <p>登録されている画像</p>
       <% sheet.sheet_pictures.each do |sheet_picture| %>
+      <% sheet_picture.id = sheet_picture.original_id unless sheet_picture.original_id.nil? %>
       <%= image_tag(sheet_picture.picture_url) %>
       <p>URL: <%= request.protocol + request.host_with_port + sheet_picture.picture_url %></p>
       <% end %>

@@ -1,7 +1,7 @@
 class Specification < ApplicationRecord
   belongs_to :project
   has_many :chapters, dependent: :destroy
-  validates :title, presence: true, uniqueness: true
+  validates :title, presence: true
 
   after_initialize :set_default_value_if_nil
 

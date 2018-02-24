@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171119123255) do
+ActiveRecord::Schema.define(version: 20180224141719) do
 
   create_table "chapters", force: :cascade do |t|
     t.integer "number"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20171119123255) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "format", default: "usdm"
+    t.integer "original_id"
   end
 
   create_table "functions", force: :cascade do |t|
@@ -27,6 +28,7 @@ ActiveRecord::Schema.define(version: 20171119123255) do
     t.integer "requirement_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "original_id"
   end
 
   create_table "keywords", force: :cascade do |t|
@@ -77,6 +79,7 @@ ActiveRecord::Schema.define(version: 20171119123255) do
     t.integer "section_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "original_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -91,6 +94,7 @@ ActiveRecord::Schema.define(version: 20171119123255) do
     t.integer "chapter_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "original_id"
   end
 
   create_table "sheet_pictures", force: :cascade do |t|
@@ -98,6 +102,7 @@ ActiveRecord::Schema.define(version: 20171119123255) do
     t.integer "sheet_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "original_id"
   end
 
   create_table "sheets", force: :cascade do |t|
@@ -105,6 +110,7 @@ ActiveRecord::Schema.define(version: 20171119123255) do
     t.integer "chapter_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "original_id"
   end
 
   create_table "spec_keywords", force: :cascade do |t|
@@ -120,6 +126,7 @@ ActiveRecord::Schema.define(version: 20171119123255) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "project_id"
+    t.integer "original_id"
   end
 
   create_table "specs", force: :cascade do |t|
@@ -132,6 +139,7 @@ ActiveRecord::Schema.define(version: 20171119123255) do
     t.boolean "design_review", default: false
     t.boolean "test_review", default: false
     t.string "picture"
+    t.integer "original_id"
   end
 
   create_table "users", force: :cascade do |t|
